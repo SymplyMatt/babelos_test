@@ -1,4 +1,13 @@
 body{
     margin: 0;
     box-sizing: border-box;
+    font-family: Inter, Courier, monospace;
 }
+::-webkit-scrollbar {
+    width: 0.2rem;
+    height: 0.02rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #0A6C52;
+  }

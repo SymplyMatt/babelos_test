@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import FlowLine from './FlowLine'
 import TextInput from '../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
+import SelectInput from '../common/SelectInput';
+import Radio from '../common/Radio';
 
 const InputSections = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>('NG');
-
+    const ages = ["Select age","1"]
+    const genders = ["Male","Female"]
     const handleSelect = (countryCode: string) => {
         setSelectedCountry(countryCode);
         console.log('Selected country code:', countryCode);
@@ -58,22 +61,12 @@ const InputSections = () => {
             </div>
             <div className="w-full name-flex">
                 <div className="p-20 w-full">
-                    <div className="input-area w-full">
-                        <div className="label">Age <span className="span-8">*</span></div>
-                        <select>
-                            <option value="">20</option>
-                        </select>
-                    </div>
+                    <SelectInput options={ages} label='Age' span='*'/>
                 </div>
                 <div className="p-20 w-full gender">
                     <div className="label">Choose Gender <span className="font-8">*</span></div>
                     <div className="">
-                        <div className="">
-                            <input type="radio"  />Male
-                        </div>
-                        <div className="">
-                            <input type="radio"  />Female
-                        </div>
+                        <Radio options={genders}/>
                     </div>
                 </div>
             </div>

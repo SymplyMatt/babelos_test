@@ -1,11 +1,16 @@
 import React from 'react'
 
-const FlowLine = () => {
+interface ComponentProps {
+  type?: string;
+  isActive?: boolean;
+}
+const FlowLine: React.FC<ComponentProps> =  ({type = "two", isActive=false}) => {
   return (
     <div className="flow-line">
-        <i className="fa-regular fa-circle-dot"></i>
-    <div className=""></div>
-</div>
+      {type == 'three' && <div className=""></div>}
+      <i className={`fa-regular fa-circle-dot ${isActive ? 'active' : 'inactive'}`}></i>
+      <div className=""></div>
+    </div>
   )
 }
 

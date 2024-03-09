@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const ImageHero = () => {
-  return (
-    <div className='image-hero'>
-        
-    </div>
-  )
+interface ImageHeroProps {
+    src: string;
 }
 
-export default ImageHero
+const ImageHero: React.FC<ImageHeroProps> = ({ src }) => {
+    return (
+        <div className='image-hero'>
+            <img src={src} alt="" />
+        </div>
+    );
+}
+
+export default ImageHero;

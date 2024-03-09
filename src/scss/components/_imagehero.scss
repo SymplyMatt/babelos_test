@@ -1,9 +1,16 @@
 .image-hero{
     display: flex;
     height: 100%;
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
     background: #F5F0EC;
     padding: 40px;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        height: 100%;
+        width: 100%;
+    }
 }

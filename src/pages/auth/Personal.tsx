@@ -5,7 +5,7 @@ import AuthPage from "../../components/common/AuthPage"
 const Personal = () => {
   return (
     <AuthPage>
-        <ImageHero />
+        <ImageHero src="/images/personal_info_hero.svg"/>
         <PersonalInfoForm />
     </AuthPage>
   )

@@ -1,11 +1,12 @@
 import "./scss/index.scss"
 
-function App() {
+import Routes from "./routes/Router";
 
+
+function App() {
   return (
-    <>
-    </>
-  )
+      <Routes />
+  );
 }
 
-export default App
+export default App;

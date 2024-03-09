@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import SignUp from "../components/auth/SignUp";
+import Personal from "../pages/auth/Personal";
+import Auth from "../pages/auth/Auth";
 import AuthContext from "../context/AuthContext";
 
 const Routes = (): JSX.Element => {
@@ -11,11 +12,11 @@ const Routes = (): JSX.Element => {
   const pageRoutes: routeProps = [
     {
       path: "/",
-      element: <SignUp />,
+      element: <Personal />,
     },
     {
       path: "*",
-      element: <SignUp />,
+      element: <Personal />,
     },
   ];
 
@@ -24,12 +25,12 @@ const Routes = (): JSX.Element => {
       path: "/auth",
       element: 
         <AuthContext>
-          <SignUp />
+          <Auth />
         </AuthContext>,
       children: [
         {
           path: "",
-          element: <SignUp />,
+          element: <Personal />,
         },
       ],
     },

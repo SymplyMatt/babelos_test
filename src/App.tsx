@@ -1,7 +1,6 @@
-
+import "./scss/index.scss"
 
 function App() {
-
 
   return (
     <>

@@ -40,3 +40,36 @@
     }
 
 }
+
+.mobile-flow-line {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    @media (min-width: 1001px) {
+        display: none;
+    }
+    
+    >div{
+        width: 50px;
+        height: 1px;
+        background: #EAECF0;
+    }
+    >i{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        
+    }
+    .active{
+        color: #0A6C52;
+    }
+    .inactive{
+        color: #EAECF0;
+    }
+}

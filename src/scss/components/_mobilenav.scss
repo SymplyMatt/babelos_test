@@ -1,0 +1,20 @@
+.mobile-nav{
+    display: flex;
+    border-bottom: 1px solid black;
+    padding: 40px;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    color: #475467;
+    font-size: 14px;
+
+    @media (max-width: 500px) {
+        padding: 20px;
+    }
+
+    >div:last-child{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+}

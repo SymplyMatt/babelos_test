@@ -87,7 +87,6 @@
 
 .section{
     display: flex;
-    width: 100%;
     gap: 50px;
 }
 .w-full{
@@ -157,7 +156,7 @@
 
     >div:last-child{
         display: grid;
-        grid-template-columns: 80px 1fr;
+        grid-template-columns: 1fr 5fr;
         justify-content: space-between;
         width: 100%;
         align-items: center;
@@ -225,6 +224,7 @@ div.input-div{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     span{
         span: 0;

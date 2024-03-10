@@ -30,9 +30,9 @@ const InputSections = () => {
         </div>
         <div className="section w-80">
             <FlowLine type="three" />
-            <div className="w-full p-20 phone-input">
+            <div className="p-20 phone-input">
                 <div className="label">Phone number <span>*</span></div>
-                <div className="">
+                <div className="w-full">
                     <div className="phone-flag">
                         <ReactFlagsSelect 
                             countries={['NG']}

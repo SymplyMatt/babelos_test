@@ -5,12 +5,13 @@ interface ComponentProps {
     span? : string;
     spanClass? : string;
     withLabel? : boolean;
+    type?: string;
 }
-const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8'}) => {
+const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8', type='text'}) => {
   return (
     <div className="input-area w-full">
         {withLabel && <div className="label">{label} <span className={spanClass}>{span}</span></div>}
-        <input type="text" placeholder={placeholder} />
+        <input type={type} placeholder={placeholder} />
     </div>
   )
 }

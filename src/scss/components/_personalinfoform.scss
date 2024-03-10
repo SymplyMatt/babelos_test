@@ -408,3 +408,10 @@ input[type="file"]{
     justify-content: center;
     align-items: center;
 }
+
+.radio-container{
+    @media (max-width: 425px) {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+}

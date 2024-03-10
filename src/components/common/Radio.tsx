@@ -4,7 +4,7 @@ interface ComponentProps {
 }
 const Radio: React.FC<ComponentProps> = ({options}) => {
   return (
-    <div className="">
+    <div className="radio-container">
         {
             options.map((option, index) => (
                 <div key={index}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FlowLine from './FlowLine'
 import TextInput from '../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
@@ -30,7 +30,7 @@ const InputSections = () => {
         </div>
         <div className="section w-80">
             <FlowLine type="three" />
-            <div className="p-20 phone-input">
+            <div className="p-20 phone-input w-full">
                 <div className="label">Phone number <span>*</span></div>
                 <div className="w-full">
                     <div className="phone-flag">

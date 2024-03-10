@@ -4,6 +4,9 @@
     flex-direction: column;
     align-items: center;
 
+    @media (max-width: 1000px) {
+        display: none;
+    }
     // title area flow circle
     >i{
         display: flex;
@@ -31,4 +34,9 @@
 
 .visibility-hidden{
     visibility: hidden;
+
+    @media (max-width: 1000px) {
+        display: none;
+    }
+
 }

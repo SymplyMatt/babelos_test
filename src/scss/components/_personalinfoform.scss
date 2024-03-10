@@ -13,12 +13,24 @@
     box-sizing: border-box;
     margin: 0;
 
+    @media (max-width: 1000px) {
+        grid-template-rows: 1fr;
+    }
+    @media (max-width: 500px) {
+        padding: 20px;
+    }
+
+
     >div:first-child {
         display: flex;
         width: 100%;
         justify-content: space-between;
         color: #475467;
         font-size: 14px;
+
+        @media (max-width: 1000px) {
+            display: none;
+        }
 
         >div {
             cursor: pointer;
@@ -46,6 +58,10 @@
     margin: 0;
     padding-bottom: 100px;
 
+    @media (max-width: 500px) {
+        align-items: center;
+    }
+
     // title area
     >div:first-child{
         display: flex;
@@ -64,16 +80,19 @@
                 font-size: 30px;
                 color: #344054;
                 font-weight: 700;
-            }
-            >div:first-child{
-                font-size: 30px;
-                color: #344054;
-                font-weight: 700;
+
+                @media (max-width: 425px) {
+                 font-size: 22px;
+                }
             }
             >div:last-child{
                 font-size: 18px;
                 color: #344054;
                 font-weight: 500;
+
+                @media (max-width: 425px) {
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -83,11 +102,16 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 500px) {
+        align-items: center;
+    }
 }
 
 .section{
     display: flex;
     gap: 50px;
+    box-sizing: border-box;
 }
 .w-full{
     width: 100%;
@@ -125,6 +149,10 @@
         border-radius: 8px;
         color: #0C111D;
         font-size: 16px;
+
+        @media (max-width: 425px) {
+            font-size: 14px;
+        }
     }
 }
 
@@ -226,15 +254,16 @@ div.input-div{
     align-items: center;
     width: 100%;
 
-    span{
-        span: 0;
-    }
     input{
         border: none;
         outline:  none;
         padding: 8px 12px 8px 12px;
         color: #0C111D;
         font-size: 16px;
+
+        @media (max-width: 425px) {
+            font-size: 14px;
+        }
     }
 
 }
@@ -259,6 +288,14 @@ div.input-div{
 
 .w-80{
     width: 80%;
+
+    @media (max-width: 500px) {
+        width: 95%;
+    }
+    @media (max-width: 375px) {
+        width: 100%;
+    }
+
 }
 .document{
     display: flex;

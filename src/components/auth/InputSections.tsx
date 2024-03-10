@@ -52,7 +52,7 @@ const InputSections = () => {
             </div>
         </div>
         <div className="section w-80">
-            <FlowLine type="three" />
+            <FlowLine type="one" />
             <div className="p-20 w-full">
                 <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14'/>
             </div>

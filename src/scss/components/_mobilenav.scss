@@ -11,6 +11,9 @@
     @media (max-width: 500px) {
         padding: 20px;
     }
+    @media (min-width: 1001px) {
+        display: none;
+    }
 
     >div:last-child{
         display: flex;

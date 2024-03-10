@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Personal from "../pages/auth/Personal";
 import Auth from "../pages/auth/Auth";
 import AuthContext from "../context/AuthContext";
+import BankRegistration from "../pages/auth/BankRegistration";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -31,6 +32,14 @@ const Routes = (): JSX.Element => {
         {
           path: "",
           element: <Personal />,
+        },
+        {
+          path: "personal",
+          element: <Personal />,
+        },
+        {
+          path: "bank-registration",
+          element: <BankRegistration />,
         },
       ],
     },

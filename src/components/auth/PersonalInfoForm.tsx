@@ -1,12 +1,10 @@
-import TextInput from "../common/TextInput"
-import FlowLine from "./FlowLine"
 import FormTitle from "./FormTitle"
-import InputSections from "./InputSections"
+import InputSections from "./PersonalInfoInputSections"
 
 const PersonalInfoForm = () => {
   return (
     <div className="form-container">
-        <FormTitle />
+        <FormTitle title="Create Account" description="Personal Information"/>
         <InputSections />
     </div>
   )

@@ -365,3 +365,9 @@ div.input-div{
 .profile-picture-upload{
     padding: 30px 0px;
 }
+input[type="file"]{
+    height: 60px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

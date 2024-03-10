@@ -44,9 +44,8 @@ const InputSections = () => {
                         />
                         <i className="fa-solid fa-angle-down"></i>
                     </div>
-                    <div className="input-div">
-                        <span>+234</span>
-                        <input type="text" placeholder="000 0000 000" />
+                    <div className="w-full">
+                        <TextInput   placeholder="+234 000 0000 000" span="*" withLabel={false}/>
                     </div>
                 </div>
             </div>
@@ -109,11 +108,8 @@ const InputSections = () => {
             <div className="visibility-hidden">
                 <FlowLine type="three" />
             </div>
-            <div className="p-20 w-full document">
-                <div className="label">Upload ID document </div>
-                <div className="input-div w-full">
-                    <input type="file" />
-                </div>
+            <div className="p-20 w-full">
+                <TextInput  label="Upload ID document" placeholder="Enter your ID Number" span="*" spanClass='font-8' type='file'/>
             </div>
         </div>
         <div className="section w-80">

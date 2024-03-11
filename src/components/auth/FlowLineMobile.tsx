@@ -10,11 +10,11 @@ interface FlowLineMobileProps {
 const FlowLineMobile: React.FC<FlowLineMobileProps> = ({ page= 'personal' }) => {
   return (
     <div className="mobile-flow-line">
-      <img src={page === 'personal'? Active : page === 'bank' ? Completed : Inactive} alt="" />
+      <img src={page === 'personal'? Active : Completed} alt="" />
       <div className=""></div>
       <img src={page === 'personal'? Inactive : page === 'bank' ? Active : Completed} alt="" />
       <div className=""></div>
-      <img src={page == 'personal' || 'bank' ? Inactive : Active} alt="" />
+      <img src={page == 'personal' || page=='bank' ? Inactive : Active} alt="" />
       <div className=""></div>
       <img src={page == 'personal' || 'bank' ? Inactive : Active} alt="" />
     </div>

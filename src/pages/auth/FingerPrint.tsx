@@ -9,7 +9,7 @@ const FingerPrint = () => {
     <AuthPage>
         <ImageHero page="fingerprint"/>
         <MobileNav />
-        <FlowLineMobile page='bank'/>
+        <FlowLineMobile page='fingerprint'/>
         <AuthMain>
             <FingerprintForm />
         </AuthMain>

@@ -22,3 +22,58 @@
         }
     }
 }
+
+.font-14{
+    font-size: 14px !important;
+}
+.italic{
+    font-style: italic;
+    font-weight: 400;
+}
+.gap-10{
+    gap: 10px;
+}
+
+.light{
+    font-weight: 400;
+}
+
+.crop-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #F9FAFB;
+}
+
+.add-crop{
+    display: flex;
+    gap: 5px;
+    padding: 6px 10px 6px 10px;
+    color: #5EBAA2;
+    background:#F6FFFC;
+    width: fit-content;
+    border-radius: 8px;
+    font-size: 14px;
+    align-items: center;
+
+    span{
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+    }
+}
+.upload-file{
+    border: 1px solid #EAECF0;
+    border-radius: 16px;
+    padding: 40px;
+
+    .green{
+        color: #0E9874;
+        font-weight: 700;
+    }
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}

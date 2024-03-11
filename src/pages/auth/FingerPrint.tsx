@@ -1,4 +1,4 @@
-import BankDetailsForm from "../../components/auth/bank/BankDetailsForm"
+import FingerprintForm from "../../components/auth/fingerprint/FingerPrintForm"
 import FlowLineMobile from "../../components/auth/FlowLineMobile"
 import ImageHero from "../../components/auth/ImageHero"
 import MobileNav from "../../components/auth/MobileNav"
@@ -11,7 +11,7 @@ const FingerPrint = () => {
         <MobileNav />
         <FlowLineMobile page='bank'/>
         <AuthMain>
-            <BankDetailsForm />
+            <FingerprintForm />
         </AuthMain>
     </AuthPage>
   )

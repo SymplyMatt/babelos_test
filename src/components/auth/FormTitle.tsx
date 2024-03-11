@@ -4,15 +4,16 @@ import FlowLine from './FlowLine';
 interface FormTitleProps {
   title: string;
   description: string;
+  span?: string;
 }
 
-const FormTitle: React.FC<FormTitleProps> = ({ title, description }) => {
+const FormTitle: React.FC<FormTitleProps> = ({ title, description, span }) => {
   return (
     <div className="form-section w-80">
       <FlowLine isActive={true} step="two" type='two'/>
       <div className="">
         <div className="">{title}</div>
-        <div className="">{description}</div>
+        <div className="">{description} <span>{span || ''}</span></div>
       </div>
     </div>
   );

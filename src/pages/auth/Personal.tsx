@@ -7,7 +7,7 @@ import AuthMain from "../../components/common/Main"
 const Personal = () => {
   return (
     <AuthPage>
-        <ImageHero src="/images/personal_info_hero.svg"/>
+        <ImageHero page="personal"/>
         <MobileNav />
         <FlowLineMobile />
         <AuthMain>

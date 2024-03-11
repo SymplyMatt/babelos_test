@@ -7,7 +7,7 @@ import AuthMain from "../../components/common/Main"
 const FingerPrint = () => {
   return (
     <AuthPage>
-        <ImageHero src="/images/fingerprint_hero.svg"/>
+        <ImageHero page="fingerprint"/>
         <MobileNav />
         <FlowLineMobile page='bank'/>
         <AuthMain>

@@ -7,7 +7,7 @@ import AuthMain from "../../components/common/Main"
 const BankRegistration = () => {
   return (
     <AuthPage>
-        <ImageHero src="/images/bank_registration.svg"/>
+        <ImageHero page="bank"/>
         <MobileNav />
         <FlowLineMobile page='bank'/>
         <AuthMain>

@@ -2,6 +2,7 @@ import FlowLine from './FlowLine'
 import TextInput from '../common/TextInput'
 import SelectInput from '../common/SelectInput';
 import Radio from '../common/Radio';
+import FormButtons from './FormButtons';
 
 const BankRegistrationInputSections = () => {
     const banks = ["Select bank","Access bank"];
@@ -41,15 +42,7 @@ const BankRegistrationInputSections = () => {
                 <TextInput  label="Personal Bank Account Number" placeholder="Enter your account Number" span="*" spanClass='font-8'/>
             </div>
         </div>
-        <div className="section w-80">
-            <div className="visibility-hidden">
-                <FlowLine type="three" />
-            </div>
-            <div className="w-full form-buttons">
-                <div className="w-full flex align-center justify-center btn">Back</div>
-                <div className="w-full flex align-center justify-center btn green">Continue</div>
-            </div>
-        </div>
+        <FormButtons step='two'/>
     </div>
   )
 }

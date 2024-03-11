@@ -394,8 +394,18 @@ div.input-div{
         border-radius: 8px;
         cursor: pointer;
     }
-    .btn.green{
+    .btn.inactive{
+        border: 1px solid #EAECF0;
+    }
+    .btn.active{
+        border: 1px solid #D0D5DD;
+    }
+    .btn.green.inactive{
         background: #90D0BF;
+        color: white;
+    }
+    .btn.green.active{
+        background: #0E9874;
         color: white;
     }
 }

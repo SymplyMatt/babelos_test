@@ -4,6 +4,7 @@ import TextInput from '../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
 import SelectInput from '../common/SelectInput';
 import Radio from '../common/Radio';
+import FormButtons from './FormButtons';
 
 const InputSections = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>('NG');
@@ -167,15 +168,7 @@ const InputSections = () => {
                 </div>
             </div>
         </div>
-        <div className="section w-80 p-20">
-            <div className="visibility-hidden">
-                <FlowLine type="three" />
-            </div>
-            <div className="w-full form-buttons">
-                <div className="w-full flex align-center justify-center btn">Back</div>
-                <div className="w-full flex align-center justify-center btn green">Continue</div>
-            </div>
-        </div>
+        <FormButtons />
     </div>
   )
 }

@@ -15,7 +15,7 @@ const FlowLine: React.FC<ComponentProps> =  ({type = "two,", isActive=false, ste
       { step == 'one' &&  !isActive && <img src={InActive} alt="" className='flow-icon'/>}
       { step !== 'one' && isActive &&  <img src={Completed} alt="" className='flow-icon'/> }
       { step !== 'one' && !isActive &&  <img src={Active} alt="" className='flow-icon' /> }
-      <div className={`${type == 'one' ? 'visibility-hidden' : ''} ${step == 'two' && isActive ? 'active' : 'inactive'}`}></div>
+      <div className={`${type == 'one' ? 'visibility-hidden' : ''} ${step == 'two' || step == 'three' && isActive ? 'active' : 'inactive'}`}></div>
     </div>
   )
 }

@@ -3,3 +3,22 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.justify-between{
+    display: flex;
+    justify-content: space-between;
+
+    >div:last-child{
+        padding: 8px 14px 8px 14px;
+        border: 1px solid #D0D5DD;
+        box-sizing: border-box;
+        border-radius: 8px;
+        color: #344054;
+        font-size: 14px;
+
+        input[type='checkbox']{
+        color: #0E9874;
+        background-color: #0E9874;
+        }
+    }
+}

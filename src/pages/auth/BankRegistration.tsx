@@ -8,7 +8,7 @@ const BankRegistration = () => {
     <AuthPage>
         <ImageHero src="/images/bank_registration.svg"/>
         <MobileNav />
-        <FlowLineMobile />
+        <FlowLineMobile page='bank'/>
         <BankDetailsMain />
     </AuthPage>
   )

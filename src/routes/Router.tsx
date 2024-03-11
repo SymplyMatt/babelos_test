@@ -3,6 +3,7 @@ import Personal from "../pages/auth/Personal";
 import Auth from "../pages/auth/Auth";
 import AuthContext from "../context/AuthContext";
 import BankRegistration from "../pages/auth/BankRegistration";
+import FingerPrint from "../pages/auth/FingerPrint";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -40,6 +41,10 @@ const Routes = (): JSX.Element => {
         {
           path: "bank-registration",
           element: <BankRegistration />,
+        },
+        {
+          path: "fingerprint",
+          element: <FingerPrint />,
         },
       ],
     },

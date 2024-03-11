@@ -1,15 +1,18 @@
-import BankDetailsMain from "../../components/auth/BankDetailsMain"
+import BankDetailsForm from "../../components/auth/bank/BankDetailsForm"
 import FlowLineMobile from "../../components/auth/FlowLineMobile"
 import ImageHero from "../../components/auth/ImageHero"
 import MobileNav from "../../components/auth/MobileNav"
 import AuthPage from "../../components/common/AuthPage"
+import AuthMain from "../../components/common/Main"
 const BankRegistration = () => {
   return (
     <AuthPage>
         <ImageHero src="/images/bank_registration.svg"/>
         <MobileNav />
         <FlowLineMobile page='bank'/>
-        <BankDetailsMain />
+        <AuthMain>
+            <BankDetailsForm />
+        </AuthMain>
     </AuthPage>
   )
 }

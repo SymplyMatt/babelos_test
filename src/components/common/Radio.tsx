@@ -1,14 +1,15 @@
 
 interface ComponentProps {
     options: string[];
+    name?: string;
 }
-const Radio: React.FC<ComponentProps> = ({options}) => {
+const Radio: React.FC<ComponentProps> = ({options, name = 'random'}) => {
   return (
     <div className="radio-container">
         {
             options.map((option, index) => (
                 <div key={index}>
-                    <input type="radio" name="radioGroup" /> {option}
+                    <input type="radio" name={name} /> {option}
                 </div>
             ))
         }

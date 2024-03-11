@@ -16,7 +16,7 @@ const FlowLineMobile: React.FC<FlowLineMobileProps> = ({ page= 'personal' }) => 
       <div className=""></div>
       <img src={page == 'personal' || page=='bank' ? Inactive : Active} alt="" />
       <div className=""></div>
-      <img src={page == 'personal' || 'bank' ? Inactive : Active} alt="" />
+      <img src={page !== 'farm' ? Inactive : Active} alt="" />
     </div>
   );
 }

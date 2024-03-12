@@ -1,4 +1,4 @@
-import React, { createContext, useState, PropsWithChildren, useEffect} from 'react';
+import { createContext, useState, PropsWithChildren} from 'react';
 import { useLocation } from 'react-router-dom';
 
 interface Farmer {
@@ -21,7 +21,7 @@ interface Farmer {
     accountNumber: number | string;
     bankName: string;
     farmDetails: FarmDetail[];
-}
+} 
 
 interface FarmDetail {
     name: string;

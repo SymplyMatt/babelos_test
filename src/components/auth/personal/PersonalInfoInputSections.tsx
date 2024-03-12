@@ -12,11 +12,9 @@ const InputSections = () => {
     const ages = ["Select age","1"];
     const genders = ["Male","Female"];
     const sites = ["Ajegunle","Ikotun"];
-    const [buttonActive, setButtonActive] = useState(false);
     const idTypes = ["Select ID Type","National ID card (NIN)","Voter's Card", "International Passport"];
     const handleSelect = (countryCode: string) => {
         setSelectedCountry(countryCode);
-        console.log('Selected country code:', countryCode);
     };
     const { updateFormInputs, formInputs } = useContext(Context);
     const [password, setPassword] = useState('');

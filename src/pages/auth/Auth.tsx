@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet} from 'react-router-dom';
 
 const Auth: React.FC = () => {
 

@@ -12,8 +12,8 @@ interface Farmer {
     gender: string;
     resAddress: string;
     ageGroup: string;
-    hasBankAccount: boolean;
-    hasSmartphone: boolean;
+    hasBankAccount:   string;
+    hasSmartphone:  string;
     profilePic: string;
     idType: string; 
     idurl: string;
@@ -60,8 +60,8 @@ export const Context = createContext<ContextValue>({
         gender: '',
         resAddress: '',
         ageGroup: '' ,
-        hasBankAccount: false,
-        hasSmartphone: true,
+        hasBankAccount: 'Yes',
+        hasSmartphone: 'Yes',
         profilePic: '',
         idType: '', 
         idurl: '',
@@ -85,8 +85,8 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
         gender: '',
         resAddress: '',
         ageGroup: '' ,
-        hasBankAccount: false,
-        hasSmartphone: true,
+        hasBankAccount: "Yes",
+        hasSmartphone: 'Yes',
         profilePic: '',
         idType: '', 
         idurl: '',

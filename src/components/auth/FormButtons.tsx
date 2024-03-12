@@ -20,6 +20,9 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true}) =>
               if(step == 'two' && active){
                 navigate('/auth/fingerprint')
               }
+              if(step == 'three' && active){
+                navigate('/auth/farm')
+              }
             }}>Continue</div>
         </div>
     </div>

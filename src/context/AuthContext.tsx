@@ -1,5 +1,4 @@
 import { createContext, useState, PropsWithChildren} from 'react';
-import { useLocation } from 'react-router-dom';
 
 interface Farmer {
     firstName: string;

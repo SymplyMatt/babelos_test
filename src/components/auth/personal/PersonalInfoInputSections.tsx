@@ -21,7 +21,7 @@ const InputSections = () => {
                 ];
     const genders = ["Male","Female"];
     const sites = ["Ajegunle","Ikotun"];
-    const idTypes = ["Select ID Type","National ID card (NIN)","Voter's Card", "International Passport"];
+    const idTypes = ["National ID card (NIN)","Voter's Card", "International Passport"];
     const handleSelect = (countryCode: string) => {
         setSelectedCountry(countryCode);
     };
@@ -46,7 +46,6 @@ const InputSections = () => {
         formInputs.firstName === "" ||
         formInputs.lastName === "" ||
         formInputs.credential === "" ||
-        formInputs.email === "" ||
         formInputs.password === "" ||
         formInputs.confirmpassword === "" ||
         formInputs.gender === "" ||
@@ -62,9 +61,9 @@ const InputSections = () => {
     }
     
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formInputs.email)) {
-        return false;
-    }
+    // if (!emailRegex.test(formInputs.email)) {
+    //     return false;
+    // }
 
     if (formInputs.password !== formInputs.confirmpassword) {
         return false;

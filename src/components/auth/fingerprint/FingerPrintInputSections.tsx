@@ -6,14 +6,14 @@ const FingerprintInputSections = () => {
   return (
     <div className="form-area">
         <div className="section w-80">
-            <FlowLine type="three" step='three' isActive={true}/>
+            <FlowLine type="three" step='three' firstLineActive={true} secondLineActive={true} icon='completed'/>
             <div className="p-20 w-full finger-print-image-container">
                 <div className="label">Capture Fingerprint (Your L-R Index fingers)</div>
                 <img src={fingerprints} alt="" />
             </div>
         </div>
         <div className="section w-80">
-            <FlowLine type="three" step='three'/>
+            <FlowLine type="three" firstLineActive={true} icon='active'/>
             <div className="p-20 w-full finger-print-image-container">
                 <img src={fingerprintdesc} alt="" />
             </div>

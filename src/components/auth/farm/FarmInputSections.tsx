@@ -10,13 +10,13 @@ const FarmInputSections = () => {
   return (
     <div className="form-area">
         <div className="section w-80">
-            <FlowLine type="three" step='three' isActive={true}/>
+            <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed'/>
             <div className="p-20 w-full">
                 <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14'/>
             </div>
         </div>
         <div className="section w-80">
-            <FlowLine type="three" step='three' isActive={true}/>
+            <FlowLine type="three" step='three' firstLineActive={true} secondLineActive={true} icon='completed'/>
             <div className="p-20 w-full flex column gap-10">
                 <div className="label">Farm Coordinates <span className='font-14 italic'>(Optional)</span></div>
                 <div className="flex gap-10">
@@ -27,7 +27,7 @@ const FarmInputSections = () => {
             </div>
         </div>
         <div className="section w-80">
-            <FlowLine type="one" step='three' />
+            <FlowLine type="one" icon='active' />
             <div className="p-20 w-full flex column gap-10">
                 <div className="label">Crops cultivated and planting season</div>
                 <div className="flex column gap-10 crop-container">

@@ -5,12 +5,13 @@ interface FormTitleProps {
   title: string;
   description: string;
   span?: string;
+  step?: string;
 }
 
-const FormTitle: React.FC<FormTitleProps> = ({ title, description, span }) => {
+const FormTitle: React.FC<FormTitleProps> = ({ title, description, span, step = 'one' }) => {
   return (
     <div className="form-section w-80">
-      <FlowLine isActive={true} step="two" type='two'/>
+      <FlowLine type='two'  icon={step == 'one' ? 'active' : 'completed'} secondLineActive={step !== 'one' }/>
       <div className="">
         <div className="">{title}</div>
         <div className="">{description} <span>{span || ''}</span></div>

@@ -11,7 +11,7 @@ const BankRegistrationInputSections = () => {
   return (
     <div className="form-area">
         <div className="section w-80">
-            <FlowLine type="three" step='two'/>
+            <FlowLine type="three" icon='active' firstLineActive={true}/>
             <div className="p-20 w-full gender">
                 <div className="label">Do you have a smartphone <span className="font-8">*</span></div>
                 <div className="">

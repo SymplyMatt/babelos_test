@@ -1,5 +1,4 @@
 import FarmForm from "../../components/auth/farm/FarmForm"
-import FingerprintForm from "../../components/auth/fingerprint/FingerPrintForm"
 import FlowLineMobile from "../../components/auth/FlowLineMobile"
 import ImageHero from "../../components/auth/ImageHero"
 import MobileNav from "../../components/auth/MobileNav"

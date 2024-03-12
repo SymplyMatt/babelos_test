@@ -5,18 +5,20 @@ import InActive from '../../assets/inactive.svg'
 interface ComponentProps {
   type?: string;
   step?: string;
+  icon?: string;
   isActive?: boolean;
+  firstLineActive?: boolean;
+  secondLineActive?: boolean;
 }
-const FlowLine: React.FC<ComponentProps> =  ({type = "two,", isActive=false, step = "one"}) => {
+const FlowLine: React.FC<ComponentProps> =  ({type = "two,", isActive=false, step = "one", firstLineActive= false, secondLineActive= false, icon = 'inactive'}) => {
   return (
-    <div className="flow-line">
-      {type != 'two' && <div className={`${step !== 'one' ? 'active' : 'inactive'}`}></div>}
-      { step == 'one' &&  isActive && <img src={Active} alt="" className='flow-icon'/>}
-      { step == 'one' &&  !isActive && <img src={InActive} alt="" className='flow-icon'/>}
-      { step !== 'one' && isActive &&  <img src={Completed} alt="" className='flow-icon'/> }
-      { step !== 'one' && !isActive &&  <img src={Active} alt="" className='flow-icon' /> }
-      <div className={`${type == 'one' ? 'visibility-hidden' : ''} ${step == 'two' || step == 'three' && isActive ? 'active' : 'inactive'}`}></div>
-    </div>
+    <>
+      <div className="flow-line">
+        {type == 'three' && <div className={`${firstLineActive ? 'active' : 'inactive'}`}></div>}
+        { <img src={icon == 'active' ? Active : icon == 'completed' ? Completed : InActive} alt="" className='flow-icon'/>}
+        {type != 'one' && <div className={`${secondLineActive ? 'active' : 'inactive'}`}></div>}
+      </div>
+    </>
   )
 }
 

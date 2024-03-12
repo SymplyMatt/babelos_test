@@ -95,7 +95,6 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
         bankName: '',
         farmDetails: []
     });
-    const location = useLocation();
 
     const updateFormInputs = <K extends keyof Farmer>(key: K, value: Farmer[K]) => {
         const updatedInputs: Farmer = { ...formInputs };

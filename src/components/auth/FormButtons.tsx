@@ -12,7 +12,11 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true}) =>
             <FlowLine type="three" />
         </div>
         <div className={`w-full form-buttons`}>
-            <div className={`w-full flex align-center justify-center btn  ${step == 'one' ? 'inactive' : 'active'}`}>Back</div>
+            <div className={`w-full flex align-center justify-center btn  ${step == 'one' ? 'inactive' : 'active'}`} onClick={()=>{
+              if(step !=='one'){
+                navigate(-1)
+              }
+            }}>Back</div>
             <div className={`w-full flex align-center justify-center btn  ${active ? 'active' : 'inactive'} green`} onClick={()=>{
               if(step == 'one' && active){
                 navigate('/auth/bank-registration')

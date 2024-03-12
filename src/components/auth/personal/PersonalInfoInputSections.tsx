@@ -41,41 +41,9 @@ const InputSections = () => {
         const regex = /[^a-zA-Z0-9_]/;
         return regex.test(str);
     }
-    function validateForm() {
-    if (
-        formInputs.firstName === "" ||
-        formInputs.lastName === "" ||
-        formInputs.credential === "" ||
-        formInputs.password === "" ||
-        formInputs.confirmpassword === "" ||
-        formInputs.gender === "" ||
-        formInputs.resAddress === "" ||
-        formInputs.ageGroup === "" ||
-        formInputs.idType === "" ||
-        formInputs.siteId === ""
-    ) {
-        return false;
-    }
-    if(formInputs.password.length < 8 || !containsSpecialCharacter(formInputs.password) ){
-        return false;
-    }
-    
-    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // // if (!emailRegex.test(formInputs.email)) {
-    // //     return false;
-    // // }
-
-    if (formInputs.password !== formInputs.confirmpassword) {
-        return false;
-    }
-
-    return true;
-    }
 
 
-  useEffect(()=>{
-    validateForm();
-  },[formInputs])
+
   return (
     <div className="form-area">
         <div className="section w-80">
@@ -228,7 +196,7 @@ const InputSections = () => {
                 </div>
             </div>
         </div>
-        <FormButtons active={validateForm()}/>
+        <FormButtons active={true}/>
     </div>
   )
 }

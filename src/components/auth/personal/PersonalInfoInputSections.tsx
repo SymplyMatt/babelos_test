@@ -60,10 +60,10 @@ const InputSections = () => {
         return false;
     }
     
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // if (!emailRegex.test(formInputs.email)) {
-    //     return false;
-    // }
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // // if (!emailRegex.test(formInputs.email)) {
+    // //     return false;
+    // // }
 
     if (formInputs.password !== formInputs.confirmpassword) {
         return false;

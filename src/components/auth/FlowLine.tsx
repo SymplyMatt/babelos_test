@@ -10,7 +10,7 @@ interface ComponentProps {
   firstLineActive?: boolean;
   secondLineActive?: boolean;
 }
-const FlowLine: React.FC<ComponentProps> =  ({type = "two,", isActive=false, step = "one", firstLineActive= false, secondLineActive= false, icon = 'inactive'}) => {
+const FlowLine: React.FC<ComponentProps> =  ({type = "two,", firstLineActive= false, secondLineActive= false, icon = 'inactive'}) => {
   return (
     <>
       <div className="flow-line">

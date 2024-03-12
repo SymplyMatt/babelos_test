@@ -97,9 +97,7 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
 
     const updateFormInputs = <K extends keyof Farmer>(key: K, value: Farmer[K]) => {
         const updatedInputs: Farmer = { ...formInputs };
-    
         updatedInputs[key] = value;
-    
         setFormInputs(updatedInputs);
     }
     

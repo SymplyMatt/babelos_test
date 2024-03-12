@@ -8,14 +8,19 @@ interface ComponentProps {
     spanClass? : string;
     withLabel? : boolean;
     type?: string;
-    name?: string
+    name?: string;
+    updateFunction?: Function;
 }
-const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8', type='text', name=''}) => {
+const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8', type='text', name='', updateFunction}) => {
   const { updateFormInputs } = useContext(Context);
   const [inputValue, setInputValue] = useState('');
   useEffect(()=>{
-    if(name){
-      updateFormInputs(name,inputValue);
+    if(updateFunction){
+      updateFunction(name,inputValue);
+    }else{
+      if(name ){
+        updateFormInputs(name,inputValue);
+      }
     }
   },[inputValue])
   return (

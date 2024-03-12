@@ -9,7 +9,16 @@ import { Context } from '../../../context/AuthContext';
 import checkicon from '../../../assets/check_icon_completed.svg'
 const InputSections = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>('NG');
-    const ages = ["Select age","1"];
+    const ages = [
+                    "18 - 25",
+                    "26 - 35",
+                    "36 - 45",
+                    "46 - 55",
+                    "56 - 65",
+                    "66 - 75",
+                    "76 - 85",
+                    "85 - 100",
+                ];
     const genders = ["Male","Female"];
     const sites = ["Ajegunle","Ikotun"];
     const idTypes = ["Select ID Type","National ID card (NIN)","Voter's Card", "International Passport"];

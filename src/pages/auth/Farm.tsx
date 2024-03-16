@@ -1,7 +1,7 @@
 import FarmForm from "../../components/auth/farm/FarmForm"
-import FlowLineMobile from "../../components/auth/FlowLineMobile"
-import ImageHero from "../../components/auth/ImageHero"
-import MobileNav from "../../components/auth/MobileNav"
+import FlowLineMobile from "../../components/auth/common/FlowLineMobile"
+import ImageHero from "../../components/auth/common/ImageHero"
+import MobileNav from "../../components/auth/common/MobileNav"
 import AuthPage from "../../components/common/AuthPage"
 import AuthMain from "../../components/common/Main"
 const Farm = () => {

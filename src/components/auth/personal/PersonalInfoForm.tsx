@@ -1,4 +1,4 @@
-import FormTitle from "../FormTitle"
+import FormTitle from "../common/FormTitle"
 import InputSections from "./PersonalInfoInputSections"
 
 const PersonalInfoForm = () => {

@@ -1,4 +1,4 @@
-import FormTitle from "../FormTitle"
+import FormTitle from "../common/FormTitle"
 import FingerprintInputSections from "./FingerPrintInputSections"
 
 const FingerprintForm = () => {

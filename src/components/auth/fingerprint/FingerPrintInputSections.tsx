@@ -1,5 +1,5 @@
-import FlowLine from '../FlowLine';
-import FormButtons from '../FormButtons';
+import FlowLine from '../common/FlowLine';
+import FormButtons from '../common/FormButtons';
 import fingerprints from '../../../assets/fingerprints.svg';
 import fingerprintdesc from '../../../assets/fingerprint_description.svg';
 import { useState } from 'react';

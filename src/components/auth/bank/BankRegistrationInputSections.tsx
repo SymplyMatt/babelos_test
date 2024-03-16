@@ -1,8 +1,8 @@
-import FlowLine from '../FlowLine'
+import FlowLine from '../common/FlowLine'
 import TextInput from '../../common/TextInput'
 import SelectInput from '../../common/SelectInput';
 import Radio from '../../common/Radio';
-import FormButtons from '../FormButtons';
+import FormButtons from '../common/FormButtons';
 import { Context } from '../../../context/AuthContext';
 import { useContext } from 'react';
 

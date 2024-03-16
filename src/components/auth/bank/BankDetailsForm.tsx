@@ -1,5 +1,5 @@
 import BankRegistrationInputSections from "./BankRegistrationInputSections"
-import FormTitle from "../FormTitle"
+import FormTitle from "../common/FormTitle"
 
 const BankDetailsForm = () => {
   return (

@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
-import FlowLine from '../FlowLine'
+import FlowLine from '../common/FlowLine'
 import TextInput from '../../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
 import SelectInput from '../../common/SelectInput';
 import Radio from '../../common/Radio';
-import FormButtons from '../FormButtons';
+import FormButtons from '../common/FormButtons';
 import { Context } from '../../../context/AuthContext';
 import checkicon from '../../../assets/check_icon_completed.svg'
 const InputSections = () => {

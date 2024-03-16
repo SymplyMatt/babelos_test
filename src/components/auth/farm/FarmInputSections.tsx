@@ -1,5 +1,5 @@
-import FlowLine from '../FlowLine'
-import FormButtons from '../FormButtons';
+import FlowLine from '../common/FlowLine'
+import FormButtons from '../common/FormButtons';
 import TextInput from '../../common/TextInput';
 import SelectInput from '../../common/SelectInput';
 import plus from '../../../assets/plus.svg'

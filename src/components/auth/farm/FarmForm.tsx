@@ -1,4 +1,4 @@
-import FormTitle from "../FormTitle"
+import FormTitle from "../common/FormTitle"
 import FarmInputSections from "./FarmInputSections"
 
 const FarmForm = () => {

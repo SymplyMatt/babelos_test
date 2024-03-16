@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import TopLinks from '../auth/TopLinks';
+import TopLinks from '../auth/common/TopLinks';
 
 interface BankDetailsMainProps {
   children: ReactNode;

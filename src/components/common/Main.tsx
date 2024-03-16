@@ -3,12 +3,13 @@ import TopLinks from '../auth/common/TopLinks';
 
 interface BankDetailsMainProps {
   children: ReactNode;
+  page?: string;
 }
 
-const AuthMain: React.FC<BankDetailsMainProps> = ({ children }) => {
+const AuthMain: React.FC<BankDetailsMainProps> = ({ children, page='signup' }) => {
   return (
     <div className='personal-info-form'>
-      <TopLinks />
+      <TopLinks page={page}/>
       {children}
     </div>
   );

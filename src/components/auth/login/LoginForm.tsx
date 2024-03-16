@@ -4,7 +4,7 @@ import LoginInputSections from "./LoginFormSections"
 const LoginForm = () => {
   return (
     <div className="form-container">
-        <FormTitle title="Create Account" description="Personal Information" step="one"/>
+        <FormTitle title="Welcome back!" description="Welcome back! Please enter your details." step="one" hide={true}/>
         <LoginInputSections />
     </div>
   )

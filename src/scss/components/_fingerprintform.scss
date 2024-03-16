@@ -81,3 +81,24 @@
 .flex-justify-between{
     justify-content: space-between;
 }
+
+.password-fingerprint-container{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.between{
+    justify-content: space-between;
+}
+.green{
+    color: #0E9874;
+    font-weight: 600;
+}
+.pointer{
+    cursor: pointer;
+}
+.m-s{
+    margin: 10px 0px 20px 0px;
+}

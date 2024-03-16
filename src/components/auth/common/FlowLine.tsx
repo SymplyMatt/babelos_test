@@ -9,11 +9,12 @@ interface ComponentProps {
   isActive?: boolean;
   firstLineActive?: boolean;
   secondLineActive?: boolean;
+  hide?: boolean;
 }
-const FlowLine: React.FC<ComponentProps> =  ({type = "two,", firstLineActive= false, secondLineActive= false, icon = 'inactive'}) => {
+const FlowLine: React.FC<ComponentProps> =  ({type = "two,", firstLineActive= false, secondLineActive= false, icon = 'inactive', hide=false}) => {
   return (
     <>
-      <div className="flow-line">
+      <div className={`flow-line ${hide && 'visibility-hidden'}`}>
         {type == 'three' && <div className={`${firstLineActive ? 'active' : 'inactive'}`}></div>}
         { <img src={icon == 'active' ? Active : icon == 'completed' ? Completed : InActive} alt="" className='flow-icon'/>}
         {type != 'one' && <div className={`${secondLineActive ? 'active' : 'inactive'}`}></div>}

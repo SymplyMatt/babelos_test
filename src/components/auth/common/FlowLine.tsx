@@ -1,7 +1,7 @@
 import React from 'react'
-import Completed from '../../assets/completed.svg'
-import Active from '../../assets/active_step.svg'
-import InActive from '../../assets/inactive.svg'
+import Completed from '../../../assets/completed.svg'
+import Active from '../../../assets/active_step.svg'
+import InActive from '../../../assets/inactive.svg'
 interface ComponentProps {
   type?: string;
   step?: string;

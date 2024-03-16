@@ -1,7 +1,7 @@
 import React from 'react';
-import Active from '../../assets/active_step.svg';
-import Inactive from '../../assets/inactive.svg';
-import Completed from '../../assets/completed.svg';
+import Active from '../../../assets/active_step.svg';
+import Inactive from '../../../assets/inactive.svg';
+import Completed from '../../../assets/completed.svg';
 
 interface FlowLineMobileProps {
   page?: string;

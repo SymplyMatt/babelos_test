@@ -1,5 +1,5 @@
-import Logo from '../../assets/logo-mobile.svg'
-import HomeIcon from '../../assets/home_icon.svg'
+import Logo from '../../../assets/logo-mobile.svg'
+import HomeIcon from '../../../assets/home_icon.svg'
 
 const MobileNav = () => {
   return (

@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 interface FormTitleProps {
   page?: string;
 }
 const TopLinks: React.FC<FormTitleProps>  = ({page = 'signup'}) => {
+  const navigate = useNavigate();
   return (
     <div className="">
         <div className=""><i className="fa-solid fa-angle-left"></i> Back home</div>
-        {page != 'login' && <div className="">Already Have an account? <span>Log In</span></div>}
+        {page != 'login' && <div className="">Already Have an account? <span onClick={()=>navigate('/auth/login')}>Log In</span></div>}
     </div>
   )
 }

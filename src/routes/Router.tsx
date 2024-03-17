@@ -6,6 +6,7 @@ import BankRegistration from "../pages/auth/BankRegistration";
 import FingerPrint from "../pages/auth/FingerPrint";
 import Farm from "../pages/auth/Farm";
 import Login from "../pages/auth/Login";
+import Verify from "../pages/auth/Verify";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -55,6 +56,10 @@ const Routes = (): JSX.Element => {
         {
           path: "login",
           element: <Login />,
+        },
+        {
+          path: "verify",
+          element: <Verify />,
         },
       ],
     },

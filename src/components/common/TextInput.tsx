@@ -16,7 +16,7 @@ const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabe
   const [inputValue, setInputValue] = useState('');
   useEffect(()=>{
     if(updateFunction){
-      updateFunction(name,inputValue);
+      updateFunction(inputValue);
     }else{
       if(name ){
         updateFormInputs(name,inputValue);

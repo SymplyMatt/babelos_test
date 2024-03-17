@@ -12,7 +12,7 @@ interface ComponentProps {
 }
 
 const SelectInput: React.FC<ComponentProps> = ({ label, span, withLabel = true, spanClass = 'font-8', options, name = '', updateFunction }) => {
-    const [selected, setSelected] = useState<any>([options[0]]);
+    const [selected, setSelected] = useState<any>(options[0]);
     const { updateFormInputs } = useContext(Context);
 
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,7 +21,7 @@ const SelectInput: React.FC<ComponentProps> = ({ label, span, withLabel = true, 
 
     useEffect(()=>{
     if(updateFunction){
-        updateFunction(name,selected);
+        updateFunction(selected);
 
     }else{
         updateFormInputs(name, selected);

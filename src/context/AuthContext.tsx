@@ -44,6 +44,7 @@ interface Crop {
 interface ContextValue {
     formInputs: Farmer;
     updateFormInputs: Function;
+    setFormInputs: Function;
 }
 
 
@@ -69,7 +70,8 @@ export const Context = createContext<ContextValue>({
         bankName: '',
         farmDetails: []
     },
-    updateFormInputs : () => {}
+    updateFormInputs : () => {},
+    setFormInputs : () => {},
 });
 
 const AuthContext = ({ children }: PropsWithChildren<{}>) => {
@@ -103,7 +105,8 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
     
     const value: ContextValue = {
         formInputs,
-        updateFormInputs
+        updateFormInputs,
+        setFormInputs 
     };
 
   return (

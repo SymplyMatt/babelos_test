@@ -26,22 +26,21 @@ const InputSections = () => {
         setSelectedCountry(countryCode);
     };
     const { updateFormInputs, formInputs } = useContext(Context);
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    useEffect(()=>{
-        updateFormInputs('password', password);
-    },[password]);
-
-    useEffect(()=>{
-        updateFormInputs('confirmpassword', confirmPassword);
-    },[confirmPassword]);
-
-    function containsSpecialCharacter(str : string) {
-        const regex = /[^a-zA-Z0-9_]/;
-        return regex.test(str);
-    }
-
+    
+    const [firstName, setFirstName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
+    const [phoneNumber, setPhoneNumber] = useState<string>('');
+    const [emailAddress, setEmailAddress] = useState<string>('');
+    const [age, setAge] = useState<string>('');
+    const [gender, setGender] = useState<string>('');
+    const [residentialAddress, setResidentialAddress] = useState<string>('');
+    const [site, setSite] = useState<string>('');
+    const [idType, setIdType] = useState<string>('');
+    const [idNumber, setIdNumber] = useState<string>('');
+    const [idDocument, setIdDocument] = useState<File | null>(null);
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
+    // const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
 
   return (
@@ -50,10 +49,10 @@ const InputSections = () => {
             <FlowLine type="three" />
             <div className="w-full name-flex">
                 <div className="p-20 w-full">
-                    <TextInput  label="First Name" placeholder="Enter First Name" span="*" name='firstName'/>
+                    <TextInput  label="First Name" placeholder="Enter First Name" span="*" name='firstName' updateFunction={setFirstName}/>
                 </div>
                 <div className="p-20 w-full">
-                    <TextInput  label="Last Name" placeholder="Enter Last Name" span="*" name='lastName'/>
+                    <TextInput  label="Last Name" placeholder="Enter Last Name" span="*" name='lastName' updateFunction={setLastName}/>
                 </div>
             </div>
         </div>
@@ -74,7 +73,7 @@ const InputSections = () => {
                         <i className="fa-solid fa-angle-down"></i>
                     </div>
                     <div className="w-full">
-                        <TextInput   placeholder="+234 000 0000 000" span="*" withLabel={false} name='credential'/>
+                        <TextInput   placeholder="+234 000 0000 000" span="*" withLabel={false} name='credential' updateFunction={setPhoneNumber}/>
                     </div>
                 </div>
             </div>
@@ -82,7 +81,7 @@ const InputSections = () => {
         <div className="section w-80">
             <FlowLine type="one" />
             <div className="p-20 w-full">
-                <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14' name='email' />
+                <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14' name='email' updateFunction={setEmailAddress} />
             </div>
         </div>
         <div className="section w-80">
@@ -91,12 +90,12 @@ const InputSections = () => {
             </div>
             <div className="w-full name-flex">
                 <div className="p-20 w-full">
-                    <SelectInput options={ages} label='Age' span='*' name='ageGroup'/>
+                    <SelectInput options={ages} label='Age' span='*' name='ageGroup' updateFunction={setAge}/>
                 </div>
                 <div className="p-20 w-full gender">
                     <div className="label">Choose Gender <span className="font-8">*</span></div>
                     <div className="">
-                        <Radio options={genders} name='gender'/>
+                        <Radio options={genders} name='gender' updateFunction={setGender}/>
                     </div>
                 </div>
             </div>
@@ -106,7 +105,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="Residential Address" placeholder="Ex: No 21 Agaro road, Abeokuta." span="*" spanClass='font-8' name='resAddress'/>
+                <TextInput  label="Residential Address" placeholder="Ex: No 21 Agaro road, Abeokuta." span="*" spanClass='font-8' name='resAddress' updateFunction={setResidentialAddress}/>
             </div>
         </div>
         <div className="section w-80">
@@ -114,7 +113,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <SelectInput options={sites} label='Site' span='*' name='siteId'/>
+                <SelectInput options={sites} label='Site' span='*' name='siteId' updateFunction={setSite}/>
             </div>
         </div>
         <div className="section w-80">
@@ -122,7 +121,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <SelectInput options={idTypes} label='ID Type' span='*' name='idType'/>
+                <SelectInput options={idTypes} label='ID Type' span='*' name='idType' updateFunction={setIdType}/>
             </div>
         </div>
         <div className="section w-80">
@@ -130,7 +129,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="ID Number" placeholder="Enter your ID Number" span="*" spanClass='font-14'/>
+                <TextInput  label="ID Number" placeholder="Enter your ID Number" span="*" spanClass='font-14' updateFunction={setIdNumber}/>
             </div>
         </div>
         <div className="section w-80">
@@ -138,7 +137,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="Upload ID document" placeholder="Enter your ID Number" span="*" spanClass='font-8' type='file' />
+                <TextInput  label="Upload ID document" placeholder="Enter your ID Number" span="*" spanClass='font-8' type='file' updateFunction={setIdDocument} />
             </div>
         </div>
         <div className="section w-80">
@@ -175,7 +174,7 @@ const InputSections = () => {
             </div>
             <div className="password-checks">
                 <div className="font-14 flex align-center">{formInputs.password.length > 7 ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} Must be at least 8 characters</div>
-                <div className="">{containsSpecialCharacter(formInputs.password) ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} Must contain one special character</div>
+                <div className="">(formInputs.password) ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i> Must contain one special character</div>
             </div>
         </div>
         <div className="profile-picture-upload section w-80 p-20">

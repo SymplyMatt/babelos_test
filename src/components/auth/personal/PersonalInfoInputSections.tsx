@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import FlowLine from '../common/FlowLine'
 import TextInput from '../../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
@@ -7,6 +7,7 @@ import Radio from '../../common/Radio';
 import FormButtons from '../common/FormButtons';
 import { Context } from '../../../context/AuthContext';
 import checkicon from '../../../assets/check_icon_completed.svg'
+import { useNavigate } from 'react-router-dom';
 const InputSections = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>('NG');
     const ages = [
@@ -25,8 +26,8 @@ const InputSections = () => {
     const handleSelect = (countryCode: string) => {
         setSelectedCountry(countryCode);
     };
-    const { updateFormInputs, formInputs } = useContext(Context);
-    
+    const navigate = useNavigate();
+    const { formInputs, setFormInputs } = useContext(Context);
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -40,9 +41,24 @@ const InputSections = () => {
     const [idDocument, setIdDocument] = useState<File | null>(null);
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
-    // const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
-
+    const clickFunction = () =>{
+        setFormInputs({
+            ...formInputs,
+            firstName,
+            lastName,
+            credential: phoneNumber,
+            emailAddress,
+            password,
+            confirmPassword,
+            gender,
+            residentialAddress,
+            ageGroup: age ,
+            idType: idType, 
+            siteId: site,
+        });
+        navigate('/auth/bank-registration');
+    }
   return (
     <div className="form-area">
         <div className="section w-80">
@@ -174,7 +190,7 @@ const InputSections = () => {
             </div>
             <div className="password-checks">
                 <div className="font-14 flex align-center">{formInputs.password.length > 7 ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} Must be at least 8 characters</div>
-                <div className="">(formInputs.password) ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i> Must contain one special character</div>
+                <div className=""> <i className="fa-solid fa-circle-check"></i> Must contain one special character</div>
             </div>
         </div>
         <div className="profile-picture-upload section w-80 p-20">
@@ -195,7 +211,7 @@ const InputSections = () => {
                 </div>
             </div>
         </div>
-        <FormButtons active={true}/>
+        <FormButtons active={true} onClickFunction={clickFunction}/>
     </div>
   )
 }

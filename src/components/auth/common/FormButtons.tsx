@@ -3,8 +3,9 @@ import FlowLine from './FlowLine'
 interface ComponentProps {
     step?: string;
     active?: boolean;
+    onClickFunction?:Function;
   }
-const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true}) => {
+const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onClickFunction}) => {
   const navigate = useNavigate();
   return (
     <div className="section w-80">
@@ -18,14 +19,8 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true}) =>
               }
             }}>Back</div>
             <div className={`w-full flex align-center justify-center btn  ${active ? 'active' : 'inactive'} green`} onClick={()=>{
-              if(step == 'one' && active){
-                navigate('/auth/bank-registration')
-              }
-              if(step == 'two' && active){
-                navigate('/auth/fingerprint')
-              }
-              if(step == 'three' && active){
-                navigate('/auth/farm')
+              if(onClickFunction){
+                onClickFunction();
               }
             }}>Continue</div>
         </div>

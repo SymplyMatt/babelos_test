@@ -430,3 +430,8 @@ input[type="file"]{
         align-items: flex-start !important;
     }
 }
+
+.overflow-scroll-y{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}

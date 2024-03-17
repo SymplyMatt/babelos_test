@@ -7,6 +7,8 @@ import FingerPrint from "../pages/auth/FingerPrint";
 import Farm from "../pages/auth/Farm";
 import Login from "../pages/auth/Login";
 import Verify from "../pages/auth/Verify";
+import VerificationSuccess from "../pages/auth/VerificationSuccess";
+import ApprovalPending from "../pages/auth/ApprovalPending";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -60,6 +62,14 @@ const Routes = (): JSX.Element => {
         {
           path: "verify",
           element: <Verify />,
+        },
+        {
+          path: "verification-success",
+          element: <VerificationSuccess />,
+        },
+        {
+          path: "approval-pending",
+          element: <ApprovalPending />,
         },
       ],
     },

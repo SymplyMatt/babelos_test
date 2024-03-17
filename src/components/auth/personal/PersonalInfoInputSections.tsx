@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import FlowLine from '../common/FlowLine'
 import TextInput from '../../common/TextInput'
 import ReactFlagsSelect from 'react-flags-select';
@@ -8,6 +8,8 @@ import FormButtons from '../common/FormButtons';
 import { Context } from '../../../context/AuthContext';
 import checkicon from '../../../assets/check_icon_completed.svg'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const InputSections = () => {
     const [selectedCountry, setSelectedCountry] = useState<string>('NG');
     const ages = [
@@ -33,7 +35,7 @@ const InputSections = () => {
     const [phoneNumber, setPhoneNumber] = useState<string>('');
     const [emailAddress, setEmailAddress] = useState<string>('');
     const [age, setAge] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
+    const [gender, setGender] = useState<string>('Male');
     const [residentialAddress, setResidentialAddress] = useState<string>('');
     const [site, setSite] = useState<string>('');
     const [idType, setIdType] = useState<string>('');
@@ -41,23 +43,61 @@ const InputSections = () => {
     const [idDocument, setIdDocument] = useState<File | null>(null);
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
-
+    const [isValid, setIsValid] = useState<boolean>(false);
+    
+    useEffect(() => {
+        setIsValid(validateInputs());
+    }, [firstName, lastName, phoneNumber, emailAddress, age, gender, residentialAddress, site, idType, idNumber, idDocument, password, confirmPassword]);
+    function containsSpecialCharacter(str : string) {
+        var regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        
+        return regex.test(str);
+      }
+    function isValidEmail(email: string): boolean {
+        const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+    const validateInputs = (showErrors : boolean = false) =>{
+        if(!firstName || !lastName || !phoneNumber || !password || !gender || !residentialAddress || !age || !idType ||  !site){
+            showErrors && toast.error('Enter required fields!');
+            return false
+        }
+        if(emailAddress && !isValidEmail(emailAddress)){
+            showErrors && toast.error('Invalid email address!');
+            return false
+        }
+        if(password != confirmPassword){
+            showErrors && toast.error("Passwords don't match!");
+            return false
+        }
+        if(!containsSpecialCharacter(password)){
+            showErrors && toast.error("Password must contain a special character!");
+            return false
+        }
+        if(password.length < 8){
+            showErrors && toast.error("Password must be at least 8 characters!");
+            return false
+        }
+        return true
+    }
     const clickFunction = () =>{
-        setFormInputs({
-            ...formInputs,
-            firstName,
-            lastName,
-            credential: phoneNumber,
-            emailAddress,
-            password,
-            confirmPassword,
-            gender,
-            residentialAddress,
-            ageGroup: age ,
-            idType: idType, 
-            siteId: site,
-        });
-        navigate('/auth/bank-registration');
+        if(validateInputs(true)){
+            setFormInputs({
+                ...formInputs,
+                firstName,
+                lastName,
+                credential: phoneNumber,
+                emailAddress,
+                password,
+                confirmPassword,
+                gender,
+                residentialAddress,
+                ageGroup: age ,
+                idType: idType, 
+                siteId: site,
+            });
+            navigate('/auth/bank-registration');
+        }
     }
   return (
     <div className="form-area">
@@ -189,8 +229,8 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="password-checks">
-                <div className="font-14 flex align-center">{formInputs.password.length > 7 ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} Must be at least 8 characters</div>
-                <div className=""> <i className="fa-solid fa-circle-check"></i> Must contain one special character</div>
+                <div className="font-14 flex align-center">{password.length > 7 ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} &nbsp; Must be at least 8 characters</div>
+                <div className="">{containsSpecialCharacter(password)  ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>}  Must contain one special character</div>
             </div>
         </div>
         <div className="profile-picture-upload section w-80 p-20">
@@ -211,7 +251,8 @@ const InputSections = () => {
                 </div>
             </div>
         </div>
-        <FormButtons active={true} onClickFunction={clickFunction}/>
+        <FormButtons active={isValid} onClickFunction={clickFunction}/>
+        <ToastContainer />
     </div>
   )
 }

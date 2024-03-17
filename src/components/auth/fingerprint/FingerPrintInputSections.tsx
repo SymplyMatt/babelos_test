@@ -3,14 +3,17 @@ import FormButtons from '../common/FormButtons';
 import fingerprints from '../../../assets/fingerprints.svg';
 import fingerprintdesc from '../../../assets/fingerprint_description.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FingerprintInputSections = () => {
     const [validateForm, setValidateForm] = useState<boolean>(false);
-
+    const navigate = useNavigate();
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValidateForm(event.target.checked);
     };
-
+    const clickFunction = () => {
+        validateForm && navigate('/auth/farm');
+    }
     return (
         <div className="form-area">
             <div className="section w-80">
@@ -33,7 +36,7 @@ const FingerprintInputSections = () => {
                     <div className="skip-btn"><input type="checkbox" onChange={handleCheckboxChange} /> Skip for now</div>
                 </div>
             </div>
-            <FormButtons step='three' active={validateForm}/>
+            <FormButtons step='three' active={validateForm} onClickFunction={clickFunction}/>
         </div>
     );
 };

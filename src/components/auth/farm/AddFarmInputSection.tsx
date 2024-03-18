@@ -181,7 +181,7 @@ const AddFarmInputSections = () => {
             <div className="w-full flex column">
                 <div className="p-10 w-full flex gap-20">
                     <img src={prev} alt=""  className='pointer' onClick={()=> {
-                        if(activeIndex + 1 > formInputs.farmDetails.length){
+                        if(activeIndex !== 0){
                             setActiveIndex(activeIndex - 1);
                         }
                     }}/>

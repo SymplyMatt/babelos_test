@@ -4,48 +4,93 @@ import TextInput from '../../common/TextInput';
 import SelectInput from '../../common/SelectInput';
 import plus from '../../../assets/plus.svg'
 import upload_icon from '../../../assets/upload_img.svg'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Context } from '../../../context/AuthContext';
 
-interface FarmDetail {
-    name: string;
-    address: string;
-    long: string;
-    lat: string;
-    cropId: string;
-    farmSeasonStart: string;
-    farmSeasonEnd: string;
-}
 const FarmInputSections = () => {
-    const crops = ["Select crop","Maize"];
-    const months = ["Select month","January"];
-    const [inputs,setInputs] = useState<FarmDetail>({
-    name: "",
-    address: "",
-    long: "",
-    lat: "",
-    cropId: "",
-    farmSeasonStart: "",
-    farmSeasonEnd: ""
-    });
+    const { formInputs,setFormInputs } = useContext(Context);
+    const crops = ["Maize","Cassava"];
+    const months = ["January","February"];
     const [cropsArray, setCropsArray] = useState<any[]>([]);
+    const [showAddNewCrop, setShowAddNewCrop] = useState<boolean>(true);
+    const [name, setName] = useState<string>('');
+    const [longitude, setLongitude] = useState<string>('');
+    const [latitude, setLatitude] = useState<string>('');
+    const [cropId, setCropId] = useState<string>(crops[0]);
+    const [farmSeasonStart, setFarmSeasonStart] = useState<string>(months[0]);
+    const [farmSeasonEnd, setFarmSeasonEnd] = useState<string>(months[0]);
+    const [isValid, setIsValid] = useState<boolean>(false);
 
-    const updateFarmDetails = <K extends keyof FarmDetail>(key: K, value: FarmDetail[K]) => {
-        const updatedInputs: FarmDetail = { ...inputs };
-        updatedInputs[key] = value;
-        setInputs(updatedInputs);
-    };
+    useEffect(()=> {
+        setIsValid(validateInputs());
+    },[name, cropsArray]);
     const removeCrop = (id : number) => {
         const newArray = cropsArray.filter((i)=>{
             return i.id !== id
         });
+        if(cropsArray.length < 2){
+            setShowAddNewCrop(true);
+        }
         setCropsArray(newArray);
-    }
+    };
+    const addNewCrop = () =>{
+        if(showAddNewCrop){
+            if(cropId && farmSeasonEnd && farmSeasonStart){
+                const existingCrops= [...cropsArray];
+                const newCrop= {
+                    cropId : cropId,
+                    farmSeasonStart : farmSeasonStart,
+                    farmSeasonEnd : farmSeasonEnd,
+                    id : cropsArray.length + 1
+                }
+                setCropsArray([...existingCrops,newCrop]);
+                setCropId(crops[0]);
+                setFarmSeasonStart(months[0]);
+                setFarmSeasonEnd(months[0]);
+            }
+        }else{
+            setShowAddNewCrop(true);
+        }
+    };
+    const validateInputs = (showErrors : boolean = false) =>{
+        if(!name){
+            showErrors && toast.error('Farm name is required!');
+            return false
+        }
+        if(cropsArray.length < 1){
+            showErrors && toast.error('Atleast one crop is required!');
+            return false
+        }
+        return true
+    };
+    const clickFunction = () =>{
+        const farmDetails = formInputs.farmDetails;
+        const newFarmDetail = {
+            name,
+            address: '',
+            long: longitude,
+            lat: latitude,
+            docUploads: [
+                ''
+            ],
+            crops: cropsArray
+        }
+        const newFarmDetails = [...farmDetails, newFarmDetail];
+        if(validateInputs(true)){
+            setFormInputs({
+                ...formInputs,
+                farmDetails : newFarmDetails
+            });
+        }
+    };
   return (
     <div className="form-area">
         <div className="section w-80">
             <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed'/>
             <div className="p-20 w-full">
-                <TextInput  label="Farm Name" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={updateFarmDetails} name='name'/>
+                <TextInput  label="Farm Name" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={setName} name='name'/>
             </div>
         </div>
         <div className="section w-80">
@@ -53,8 +98,8 @@ const FarmInputSections = () => {
             <div className="p-20 w-full flex column gap-10">
                 <div className="label">Farm Coordinates <span className='font-14 italic'>(Optional)</span></div>
                 <div className="flex gap-10">
-                    <TextInput  label="" placeholder="Longitude" updateFunction={updateFarmDetails} name='long'/>
-                    <TextInput  label="" placeholder="Latitude" updateFunction={updateFarmDetails} name='lat'/>
+                    <TextInput  label="" placeholder="Longitude" updateFunction={setLongitude} name='long'/>
+                    <TextInput  label="" placeholder="Latitude" updateFunction={setLatitude} name='lat'/>
                 </div>
                 <div className="label"><span className='font-14 light'>Ex: Longitude: 8.6753° E. Latitude: 9.0820° N</span></div>
             </div>
@@ -67,53 +112,51 @@ const FarmInputSections = () => {
                     <div className="flex column gap-10 crop-container" key={index}>
                         <div className="w-full flex flex-justify-between p-20">
                             <div className="">CROP {index + 1 }</div>
-                            <div className="cursor-pointer" onClick={()=> removeCrop(i.id)}>X</div>
+                            <div className="pointer" onClick={()=> removeCrop(i.id)}>X</div>
                         </div>
                         <div className="w-full">
-                            <SelectInput options={[i.cropId]} label='What crop do you cultivate on this farm?' updateFunction={updateFarmDetails} name='cropId'/>
+                            <SelectInput options={[i.cropId]} label='What crop do you cultivate on this farm?' updateFunction={setCropId} name='cropId'/>
                         </div>
                         <div className="flex gap-10 w-full">
                             <div className="p-20 w-full">
-                                <SelectInput options={[i.farmSeasonStart]} label='Start month' updateFunction={updateFarmDetails} name='farmSeasonStart'/>
+                                <SelectInput options={[i.farmSeasonStart]} label='Start month' updateFunction={setFarmSeasonStart} name='farmSeasonStart'/>
                             </div>
                             <div className="p-20 w-full">
-                                <SelectInput options={[i.farmSeasonEnd]} label='End month' updateFunction={updateFarmDetails} name='farmSeasonEnd'/>
+                                <SelectInput options={[i.farmSeasonEnd]} label='End month' updateFunction={setFarmSeasonEnd} name='farmSeasonEnd'/>
                             </div>
                         </div>
                     </div>
                 ))}
-                <div className="flex column gap-10 crop-container p-20">
-                    {cropsArray.length > 0 && <div className="w-full flex flex-justify-between p-20">
-                        <div className="">CROP {cropsArray.length + 1}</div>
+
+                {showAddNewCrop && <div className="flex column gap-10 crop-container p-20">
+                    {cropsArray.length > 0  && <div className="w-full flex flex-justify-between p-20">
+                        <div className="">CROP {cropsArray.length + 1} (unsaved)</div>
                         <div className="cursor-pointer"></div>
                     </div>}
-                    <div className="w-full">
-                        <SelectInput options={crops} label='What crop do you cultivate on this farm?' updateFunction={updateFarmDetails} name='cropId'/>
-                    </div>
-                    <div className="flex gap-10 w-full">
-                        <div className="p-20 w-full">
-                            <SelectInput options={months} label='Start month' updateFunction={updateFarmDetails} name='farmSeasonStart'/>
+                    <>
+                        <div className="w-full">
+                            <SelectInput options={crops} label='What crop do you cultivate on this farm?' updateFunction={setCropId} name='cropId'/>
                         </div>
-                        <div className="p-20 w-full">
-                            <SelectInput options={months} label='End month' updateFunction={updateFarmDetails} name='farmSeasonEnd'/>
+                        <div className="flex gap-10 w-full">
+                            <div className="p-20 w-full">
+                                <SelectInput options={months} label='Start month' updateFunction={setFarmSeasonStart} name='farmSeasonStart'/>
+                            </div>
+                            <div className="p-20 w-full">
+                                <SelectInput options={months} label='End month' updateFunction={setFarmSeasonEnd} name='farmSeasonEnd'/>
+                            </div>
                         </div>
-                    </div>
+                    </>
+                </div>}
+                <div className="add-crop">
+                    <div onClick={()=> {
+                            addNewCrop();
+                            setShowAddNewCrop(true);
+                }} className='pointer'><span><img src={plus} alt="" /></span> {showAddNewCrop ? 'Save and add another crop' : 'Add another crop'}</div>
+                    {showAddNewCrop && <div onClick={()=>{
+                            addNewCrop();
+                            setShowAddNewCrop(false);
+                    }}className='pointer'>Save</div>}
                 </div>
-                <div className="add-crop" onClick={()=>{
-                    if(inputs.cropId && inputs.farmSeasonEnd && inputs.farmSeasonStart){
-                        const existingCrops= [...cropsArray];
-                        const newCrop= {
-                            cropId : inputs.cropId,
-                            farmSeasonStart : inputs.farmSeasonStart,
-                            farmSeasonEnd : inputs.farmSeasonEnd,
-                            id : crops.length + 1
-                        }
-                        setCropsArray([...existingCrops,newCrop]);
-                        updateFarmDetails('cropId', '');
-                        updateFarmDetails('farmSeasonStart', '');
-                        updateFarmDetails('farmSeasonEnd', '');
-                    }
-                }}><span><img src={plus} alt="" /></span> Add another crop</div>
             </div>
         </div>
         <div className="section w-80">
@@ -129,7 +172,8 @@ const FarmInputSections = () => {
                 </div>
             </div>
         </div>
-        <FormButtons step='one'/>
+        <FormButtons step='one' active={isValid} onClickFunction={clickFunction }/>
+        <ToastContainer />
     </div>
   )
 }

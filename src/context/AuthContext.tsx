@@ -22,7 +22,7 @@ interface Farmer {
     farmDetails: FarmDetail[];
 } 
 
-interface FarmDetail {
+export interface FarmDetail {
     name: string;
     address: string;
     long: number;

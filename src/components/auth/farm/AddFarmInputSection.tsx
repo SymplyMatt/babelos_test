@@ -16,7 +16,7 @@ import dot_inactive from '../../../assets/dot_inactive.svg'
 import { useContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Context } from '../../../context/AuthContext';
+import { Context, FarmDetail } from '../../../context/AuthContext';
 
 const AddFarmInputSections = () => {
     const { formInputs,setFormInputs } = useContext(Context);
@@ -31,7 +31,12 @@ const AddFarmInputSections = () => {
     const [farmSeasonStart, setFarmSeasonStart] = useState<string>(months[0]);
     const [farmSeasonEnd, setFarmSeasonEnd] = useState<string>(months[0]);
     const [isValid, setIsValid] = useState<boolean>(false);
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const [activeFarm, setActiveFarm] = useState<FarmDetail>(formInputs.farmDetails[activeIndex]);
 
+    useEffect(()=>{
+        setActiveFarm(formInputs.farmDetails[activeIndex]);
+    }, [activeIndex]);
     useEffect(()=> {
         setIsValid(validateInputs());
     },[name, cropsArray]);
@@ -100,7 +105,7 @@ const AddFarmInputSections = () => {
             <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed'/>
             <div className="w-full farm-list-container">
                 <div className="w-full flex">
-                    <div className="">Farm One</div>
+                    <div className="">Farm {activeIndex + 1}</div>
                     <div className="">
                         <img src={edit} alt="" className='pointer'/>
                         <img src={delete_icon} alt="" className='pointer'/>
@@ -114,7 +119,7 @@ const AddFarmInputSections = () => {
                             <div className="title">
                                 FARM NAME
                             </div>
-                            <div className="farm-name">Best Farms</div>
+                            <div className="farm-name">{activeFarm.name}</div>
                         </div>
                     </div>
                     <div className="flex gap-5">
@@ -123,7 +128,7 @@ const AddFarmInputSections = () => {
                             <div className="title">
                                 LONGITUDE
                             </div>
-                            <div className="longi btn">9.0820° N</div>
+                            <div className="longi btn">{activeFarm.long}</div>
                         </div>
                     </div>
                     <div className="flex gap-5">
@@ -131,7 +136,7 @@ const AddFarmInputSections = () => {
                             <div className="title">
                                 LATITUDE
                             </div>
-                            <div className="lati btn">8.6753° E</div>
+                            <div className="lati btn">{activeFarm.lat}</div>
                         </div>
                     </div>
                 </div>
@@ -149,9 +154,9 @@ const AddFarmInputSections = () => {
                                     CROPS PRODUCED
                                 </div>
                                 <div className="grid-3 gap-5">
-                                    <div className="btn brown">RICE</div>
-                                    <div className="btn brown">RICE</div>
-                                    <div className="btn brown">RICE</div>
+                                    {activeFarm.crops.map((item : any, index : number)=>(
+                                        <div className="btn brown" key={index}>{item.cropId}</div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -175,13 +180,21 @@ const AddFarmInputSections = () => {
             <FlowLine type="three" firstLineActive={true} hideThirdLine={true} icon='active'/>
             <div className="w-full flex column">
                 <div className="p-10 w-full flex gap-20">
-                    <img src={prev} alt=""  className='pointer'/>
+                    <img src={prev} alt=""  className='pointer' onClick={()=> {
+                        if(activeIndex + 1 > formInputs.farmDetails.length){
+                            setActiveIndex(activeIndex - 1);
+                        }
+                    }}/>
                     <div className="circle-dots flex gap-5">
-                        <img src={dot_active} alt="" className='pointer'/>
-                        <img src={dot_inactive} alt="" className='pointer'/>
-                        <img src={dot_inactive} alt="" className='pointer'/>
+                        {formInputs.farmDetails.map((item : any, index : number)=>(
+                            <img src={activeIndex == index ? dot_active : dot_inactive } alt={item.name} className='pointer'key={index} onClick={()=> setActiveIndex(index)}/>
+                        ))}
                     </div>
-                    <img src={next} alt="" className='pointer' />
+                    <img src={next} alt="" className='pointer'  onClick={()=> {
+                        if(activeIndex + 1 < formInputs.farmDetails.length){
+                            setActiveIndex(activeIndex + 1);
+                        }
+                    }}/>
                 </div>
                 <div className="">
                     <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed' hide={true}/>

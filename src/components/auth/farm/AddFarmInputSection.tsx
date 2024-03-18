@@ -17,8 +17,10 @@ import { useContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Context, FarmDetail } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const AddFarmInputSections = () => {
+    const navigate = useNavigate();
     const { formInputs,setFormInputs } = useContext(Context);
     const crops = ["Maize","Cassava"];
     const months = ["January","February"];
@@ -99,6 +101,18 @@ const AddFarmInputSections = () => {
             });
         }
     };
+    const removeFarm = (id : number) => {
+        const filteredFarms = formInputs.farmDetails.filter((i : any) =>{
+            return i.id !== id
+        });
+        setFormInputs({
+            ...formInputs,
+            farmDetails : filteredFarms
+        });
+        if(formInputs.farmDetails.length < 2){
+            navigate('/auth/farm');
+        }
+    };
   return (
     <div className="form-area">
         <div className="section w-80">
@@ -108,7 +122,9 @@ const AddFarmInputSections = () => {
                     <div className="">Farm {activeIndex + 1}</div>
                     <div className="">
                         <img src={edit} alt="" className='pointer'/>
-                        <img src={delete_icon} alt="" className='pointer'/>
+                        <img src={delete_icon} alt="" className='pointer' onClick={()=>{
+                            removeFarm(activeIndex)
+                        }}/>
                     </div>
                 </div>
                 <div className="full-line"></div>
@@ -199,7 +215,7 @@ const AddFarmInputSections = () => {
                 <div className="">
                     <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed' hide={true}/>
                     <div className="w-full text-center gap-10 line">
-                    <hr className='w-full h-1' />  FARM 2 <hr className='w-full h-1'/>
+                    <hr className='w-full h-1' />  FARM {formInputs.farmDetails.length + 1} <hr className='w-full h-1'/>
                     </div>
                 </div>
             </div>

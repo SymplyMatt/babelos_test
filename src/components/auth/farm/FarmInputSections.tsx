@@ -72,6 +72,7 @@ const FarmInputSections = () => {
         const newFarmDetail = {
             name,
             address: '',
+            id : formInputs.farmDetails.length,
             long: longitude,
             lat: latitude,
             docUploads: [

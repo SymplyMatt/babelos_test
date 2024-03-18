@@ -9,6 +9,7 @@ import Login from "../pages/auth/Login";
 import Verify from "../pages/auth/Verify";
 import VerificationSuccess from "../pages/auth/VerificationSuccess";
 import ApprovalPending from "../pages/auth/ApprovalPending";
+import AddFarm from "../pages/auth/AddFarm";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -54,6 +55,10 @@ const Routes = (): JSX.Element => {
         {
           path: "farm",
           element: <Farm />,
+        },
+        {
+          path: "addfarm",
+          element: <AddFarm />,
         },
         {
           path: "login",

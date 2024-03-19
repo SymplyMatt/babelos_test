@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import farm_icon from '../../../assets/farm_icon.svg'
+import { Context } from '../../../context/AuthContext';
 
 interface ComponentProps {
     showOverlay : boolean;
@@ -8,6 +9,10 @@ interface ComponentProps {
   }
   
 const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, title})  => {
+    const { loading, setLoading } = useContext(Context);
+    const createAccount = () => {
+        setLoading(true);
+    }
     return (
     <>
         {showOverlay && <div className="overlay-farm">
@@ -24,9 +29,11 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
             </div>
             <div className="w-full flex column gap-10  center">
                 <div className={`w-full form-buttons column`}>
-                    <div className={`w-full flex align-center justify-center btn active green m-40`}>No, create my account</div>
-                    <div className={`w-full flex align-center justify-center btn active m-40`} onClick={()=>{
-                        onClickFunction && onClickFunction();
+                    <div className={`w-full flex align-center justify-center btn ${!loading ? 'active' : 'inactive'} green m-40`} onClick={()=>{
+                        !loading && createAccount();
+                    }}>{!loading && 'No, create my account'} {loading && <i className="fa-solid fa-spinner spinner"></i>}</div>
+                    <div className={`w-full flex align-center justify-center btn active m-40  ${loading && 'not-allowed'}`} onClick={()=>{
+                        !loading && onClickFunction && onClickFunction();
                     }}>Yes, I have another farm</div>
                 </div>
             </div>

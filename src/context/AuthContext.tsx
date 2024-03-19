@@ -101,7 +101,7 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
         bankName: '',
         farmDetails: []
     });
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
     const updateFormInputs = <K extends keyof Farmer>(key: K, value: Farmer[K]) => {
         const updatedInputs: Farmer = { ...formInputs };
         updatedInputs[key] = value;

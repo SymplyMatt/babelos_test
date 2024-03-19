@@ -29,7 +29,7 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
                     "lastName": formInputs.lastName,
                     "credential": formInputs.credential,
                     "email": formInputs.email,
-                    "password": '#A1234567890z',
+                    "password": formInputs.password,
                     "roleName": formInputs.roleName,
                     "gender": formInputs.gender,
                     "resAddress": formInputs.resAddress,

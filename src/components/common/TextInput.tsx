@@ -16,6 +16,11 @@ const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabe
   const { updateFormInputs } = useContext(Context);
   const [inputValue, setInputValue] = useState('');
   useEffect(()=>{
+    if(name == 'credential'){
+      setInputValue('+234');
+    }
+  },[])
+  useEffect(()=>{
     if(reset){
       setInputValue('');
     }

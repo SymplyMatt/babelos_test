@@ -4,8 +4,9 @@ interface ComponentProps {
     step?: string;
     active?: boolean;
     onClickFunction?:Function;
+    buttonText?:string;
   }
-const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onClickFunction}) => {
+const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onClickFunction, buttonText = 'Continue'}) => {
   const navigate = useNavigate();
   return (
     <div className="section w-80">
@@ -22,7 +23,7 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onC
               if(onClickFunction){
                 onClickFunction();
               }
-            }}>Continue</div>
+            }}>{buttonText}</div>
         </div>
     </div>
   )

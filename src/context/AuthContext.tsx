@@ -27,7 +27,7 @@ export interface FarmDetail {
     address: string;
     long: number;
     lat: number;
-    id: number;
+    id?: number;
     docUploads: DocumentUpload[];
     crops: Crop[];
 }

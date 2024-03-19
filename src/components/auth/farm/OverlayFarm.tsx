@@ -15,13 +15,21 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
     const createAccount = async () => {
         try {
             setLoading(true);
+            const farmDetails = [...formInputs.farmDetails];
+            farmDetails.forEach(item => {
+                delete item.id
+                item.crops.forEach((crop : any) => {
+                    delete crop.cropname;
+                    delete crop.id;
+                });
+            }); 
             const reqData = {
                 "userDetails": {
                     "firstName": formInputs.firstName,
                     "lastName": formInputs.lastName,
                     "credential": formInputs.credential,
                     "email": formInputs.email,
-                    "password": formInputs.password,
+                    "password": '#A1234567890z',
                     "roleName": formInputs.roleName,
                     "gender": formInputs.gender,
                     "resAddress": formInputs.resAddress,
@@ -41,17 +49,16 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
                     "accountNumber": formInputs.accountNumber,
                     "bankName": formInputs.bankName
                 },
-                "farmDetails":formInputs.farmDetails
+                "farmDetails":farmDetails
             }
             const response: any = await sendRequest('post', `/signup`,reqData);
             setLoading(false);
             if (response.status === 200) {
-                // navigate('/auth/phoneverification', { state: {  }});
-                console.log(response.data);
+                navigate('/auth/verify', { state: { auth : true }});
                 
             } else {
                 setLoading(false);
-                console.log(response.data);
+                console.log(response);
             }
         } catch (error) {
           console.error('An error occurred while fetching data');

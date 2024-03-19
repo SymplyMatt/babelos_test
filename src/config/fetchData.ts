@@ -30,6 +30,7 @@ export default async function sendRequest(
     const response = await axios(config);
     return response;
   } catch (error) {
+    console.log(error);
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError; 
       if (axiosError.response) {

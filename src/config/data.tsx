@@ -2,7 +2,7 @@ interface Constants {
   apiUrl: string;
 }
 const appData: Constants = {
-  apiUrl : 'https://157.230.109.98',
+  apiUrl : 'https://dev.farmwarehouse.ng/api/users',
 };
 
 export default appData;

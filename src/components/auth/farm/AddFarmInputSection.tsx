@@ -62,7 +62,8 @@ interface ComponentProps {
             if(cropId && farmSeasonEnd && farmSeasonStart){
                 const existingCrops= [...cropsArray];
                 const newCrop= {
-                    cropId : cropId,
+                    cropId : 'fwc-x7vshczm',
+                    cropname : cropId,
                     farmSeasonStart : farmSeasonStart,
                     farmSeasonEnd : farmSeasonEnd,
                     id : cropsArray.length + 1
@@ -92,11 +93,14 @@ interface ComponentProps {
             const farmDetails = formInputs.farmDetails;
             const newFarmDetail = {
                 name,
-                address: '',
+                address: 'Iyana Ipaja',
+                id : formInputs.farmDetails.length,
                 long: longitude,
                 lat: latitude,
                 docUploads: [
-                    ''
+                    {
+                        "url": "https://"
+                    },
                 ],
                 crops: cropsArray
             }
@@ -186,7 +190,7 @@ interface ComponentProps {
                                 </div>
                                 <div className="grid-3 gap-5">
                                     {activeFarm.crops.map((item : any, index : number)=>(
-                                        <div className="btn brown" key={index}>{item.cropId}</div>
+                                        <div className="btn brown" key={index}>{item.cropname}</div>
                                     ))}
                                 </div>
                             </div>
@@ -263,7 +267,7 @@ interface ComponentProps {
                             <div className="pointer" onClick={()=> removeCrop(i.id)}>X</div>
                         </div>
                         <div className="w-full">
-                            <SelectInput options={[i.cropId]} label='What crop do you cultivate on this farm?' updateFunction={setCropId} name='cropId'/>
+                            <SelectInput options={[i.cropname]} label='What crop do you cultivate on this farm?' updateFunction={setCropId} name='cropId'/>
                         </div>
                         <div className="flex gap-10 w-full">
                             <div className="p-20 w-full">

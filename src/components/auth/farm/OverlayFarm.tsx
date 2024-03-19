@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import farm_icon from '../../../assets/farm_icon.svg'
 import { Context } from '../../../context/AuthContext';
-
+import sendRequest from '../../../config/fetchData';
+import { useNavigate } from 'react-router-dom';
 interface ComponentProps {
     showOverlay : boolean;
     onClickFunction : Function;
@@ -9,10 +10,54 @@ interface ComponentProps {
   }
   
 const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, title})  => {
-    const { loading, setLoading } = useContext(Context);
-    const createAccount = () => {
-        setLoading(true);
-    }
+    const { loading, setLoading, formInputs } = useContext(Context);
+    const navigate = useNavigate();
+    const createAccount = async () => {
+        try {
+            setLoading(true);
+            const reqData = {
+                "userDetails": {
+                    "firstName": formInputs.firstName,
+                    "lastName": formInputs.lastName,
+                    "credential": formInputs.credential,
+                    "email": formInputs.email,
+                    "password": formInputs.password,
+                    "roleName": formInputs.roleName,
+                    "gender": formInputs.gender,
+                    "resAddress": formInputs.resAddress,
+                    "ageGroup": formInputs.ageGroup,
+                    "hasBankAccount": formInputs.hasBankAccount == 'Yes' ? 'true' : 'false',
+                    "hasSmartphone": formInputs.hasSmartphone == 'Yes' ? true : false,
+                    "profilePic": {
+                        "url": formInputs.profilePic
+                    }
+                },
+                "idUpload": {
+                    "idType": formInputs.idType,
+                    "url": formInputs.idurl
+                },
+                "siteId": formInputs.siteId,
+                "bankDetails": {
+                    "accountNumber": formInputs.accountNumber,
+                    "bankName": formInputs.bankName
+                },
+                "farmDetails":formInputs.farmDetails
+            }
+            const response: any = await sendRequest('post', `/signup`,reqData);
+            setLoading(false);
+            if (response.status === 200) {
+                // navigate('/auth/phoneverification', { state: {  }});
+                console.log(response.data);
+                
+            } else {
+                setLoading(false);
+                console.log(response.data);
+            }
+        } catch (error) {
+          console.error('An error occurred while fetching data');
+          setLoading(false);
+        }
+    };
     return (
     <>
         {showOverlay && <div className="overlay-farm">

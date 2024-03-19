@@ -46,6 +46,8 @@ interface ContextValue {
     formInputs: Farmer;
     updateFormInputs: Function;
     setFormInputs: Function;
+    setLoading: Function;
+    loading: boolean;
 }
 
 
@@ -73,6 +75,8 @@ export const Context = createContext<ContextValue>({
     },
     updateFormInputs : () => {},
     setFormInputs : () => {},
+    loading : false,
+    setLoading : () => {},
 });
 
 const AuthContext = ({ children }: PropsWithChildren<{}>) => {
@@ -97,7 +101,7 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
         bankName: '',
         farmDetails: []
     });
-
+    const [loading, setLoading] = useState<boolean>(true);
     const updateFormInputs = <K extends keyof Farmer>(key: K, value: Farmer[K]) => {
         const updatedInputs: Farmer = { ...formInputs };
         updatedInputs[key] = value;
@@ -107,7 +111,9 @@ const AuthContext = ({ children }: PropsWithChildren<{}>) => {
     const value: ContextValue = {
         formInputs,
         updateFormInputs,
-        setFormInputs 
+        setFormInputs,
+        loading,
+        setLoading 
     };
 
   return (

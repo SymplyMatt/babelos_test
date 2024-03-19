@@ -44,7 +44,7 @@ const InputSections = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(false);
-    
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     useEffect(() => {
         setIsValid(validateInputs());
     }, [firstName, lastName, phoneNumber, emailAddress, age, gender, residentialAddress, site, idType, idNumber, idDocument, password, confirmPassword]);
@@ -57,6 +57,15 @@ const InputSections = () => {
         const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
       }
+      function containsUpperLowerAndNumber(input : string) {
+        var uppercaseRegex = /[A-Z]/;
+        var lowercaseRegex = /[a-z]/;
+        var numberRegex = /[0-9]/;
+        var containsUppercase = uppercaseRegex.test(input);
+        var containsLowercase = lowercaseRegex.test(input);
+        var containsNumber = numberRegex.test(input);
+        return containsUppercase && containsLowercase && containsNumber;
+    }
     const validateInputs = (showErrors : boolean = false) =>{
         if(!firstName || !lastName || !phoneNumber || !password || !gender || !residentialAddress || !age || !idType ||  !site){
             showErrors && toast.error('Enter required fields!');
@@ -76,6 +85,9 @@ const InputSections = () => {
         }
         if(password.length < 8){
             showErrors && toast.error("Password must be at least 8 characters!");
+            return false
+        }
+        if(!containsUpperLowerAndNumber(password)){
             return false
         }
         return true
@@ -204,8 +216,8 @@ const InputSections = () => {
                 <div className="w-full password-input-container">
                     <div className="label">Create password <span className='font-8'>*</span></div>
                     <div className="input-div w-full password">
-                        <input type='password' placeholder='Create Password' className='' value={password} onChange={(e) => setPassword(e.currentTarget.value) }/>
-                        <div className=""><i className="fa-regular fa-eye"></i></div>
+                        <input type={showPassword ? 'text' : 'password'} placeholder='Create Password' className='' value={password} onChange={(e) => setPassword(e.currentTarget.value) }/>
+                        <div className="" onClick={()=> setShowPassword(!showPassword)}>{!showPassword ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
                     </div>
                 </div>
             </div>
@@ -218,8 +230,8 @@ const InputSections = () => {
                 <div className="w-full password-input-container">
                     <div className="label">Confirm password <span className='font-8'>*</span></div>
                     <div className="input-div w-full password">
-                        <input type='password' placeholder='Confirm password' className='' value={confirmPassword} onChange={(e) => setConfirmPassword(e.currentTarget.value) }/>
-                        <div className=""><i className="fa-regular fa-eye"></i></div>
+                        <input type={showPassword ? 'text' : 'password'} placeholder='Confirm password' className='' value={confirmPassword} onChange={(e) => setConfirmPassword(e.currentTarget.value) }/>
+                        <div className="" onClick={()=> setShowPassword(!showPassword)}>{!showPassword ? <i className="fa-solid fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
                     </div>
                 </div>
             </div>
@@ -231,6 +243,7 @@ const InputSections = () => {
             <div className="password-checks">
                 <div className="font-14 flex align-center">{password.length > 7 ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>} &nbsp; Must be at least 8 characters</div>
                 <div className="">{containsSpecialCharacter(password)  ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>}  Must contain one special character</div>
+                <div className="">{containsUpperLowerAndNumber(password)  ? <img src={checkicon} alt="" /> : <i className="fa-solid fa-circle-check"></i>}  Must contain at least one uppercase letter, lowercase letter and number</div>
             </div>
         </div>
         <div className="profile-picture-upload section w-80 p-20">

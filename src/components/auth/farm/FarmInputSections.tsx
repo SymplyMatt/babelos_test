@@ -8,12 +8,10 @@ import { useContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Context } from '../../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 interface ComponentProps {
     setShowOverlay : Function;
   }
 const FarmInputSections : React.FC<ComponentProps>  = ({setShowOverlay})  => {
-    const navigate = useNavigate();
     const { formInputs,setFormInputs } = useContext(Context);
     const crops = ["Maize","Cassava"];
     const months = ["January","February"];

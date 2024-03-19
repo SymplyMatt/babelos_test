@@ -19,7 +19,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Context, FarmDetail } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const AddFarmInputSections = () => {
+interface ComponentProps {
+    setShowOverlay : Function;
+  }
+  
+  const AddFarmInputSections: React.FC<ComponentProps>  = ({setShowOverlay})  => {
     const navigate = useNavigate();
     const { formInputs,setFormInputs } = useContext(Context);
     const crops = ["Maize","Cassava"];
@@ -82,23 +86,24 @@ const AddFarmInputSections = () => {
         return true
     };
     const clickFunction = () =>{
-        const farmDetails = formInputs.farmDetails;
-        const newFarmDetail = {
-            name,
-            address: '',
-            long: longitude,
-            lat: latitude,
-            docUploads: [
-                ''
-            ],
-            crops: cropsArray
-        }
-        const newFarmDetails = [...farmDetails, newFarmDetail];
         if(validateInputs(true)){
+            const farmDetails = formInputs.farmDetails;
+            const newFarmDetail = {
+                name,
+                address: '',
+                long: longitude,
+                lat: latitude,
+                docUploads: [
+                    ''
+                ],
+                crops: cropsArray
+            }
+            const newFarmDetails = [...farmDetails, newFarmDetail];
             setFormInputs({
                 ...formInputs,
                 farmDetails : newFarmDetails
             });
+            setShowOverlay(true);
         }
     };
     const removeFarm = (id : number) => {

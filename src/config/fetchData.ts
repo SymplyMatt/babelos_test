@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import appData from './data';
 interface ErrorResponse {
   status: number;
+  message: any;
 }
 
 export default async function sendRequest(
@@ -30,14 +31,12 @@ export default async function sendRequest(
     const response = await axios(config);
     return response;
   } catch (error) {
-    console.log(error);
     if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError; 
       if (axiosError.response) {
-        return { status: axiosError.response.status };
+        return { status: axiosError.response.status, message: (axiosError.response.data as any)?.message || ""};
       }
     }
-    console.error('An error occured');
     return undefined; 
   }
 }

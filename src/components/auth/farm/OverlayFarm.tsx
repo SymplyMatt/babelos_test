@@ -3,6 +3,8 @@ import farm_icon from '../../../assets/farm_icon.svg'
 import { Context } from '../../../context/AuthContext';
 import sendRequest from '../../../config/fetchData';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 interface ComponentProps {
     showOverlay : boolean;
     onClickFunction : Function;
@@ -58,10 +60,10 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
                 
             } else {
                 setLoading(false);
-                console.log(response);
+                toast.error(response.message);
             }
         } catch (error) {
-          console.error('An error occurred while fetching data');
+          console.error(error);
           setLoading(false);
         }
     };
@@ -92,6 +94,7 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
         </div>
         </div>
     </div>}
+        <ToastContainer />
     </>
 )
 }

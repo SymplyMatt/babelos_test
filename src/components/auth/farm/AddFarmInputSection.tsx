@@ -72,7 +72,7 @@ const AddFarmInputSections = () => {
     };
     const validateInputs = (showErrors : boolean = false) =>{
         if(!name){
-            showErrors && toast.error('FARM NAME is required!');
+            showErrors && toast.error('Farm name is required!');
             return false
         }
         if(cropsArray.length < 1){

@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const BankRegistrationInputSections = () => {
     const navigate = useNavigate();
     const { formInputs, setFormInputs } = useContext(Context);
-    const banks = ["Select bank","Access bank"];
+    const banks = ["Access bank"];
     const smartphone = ["Yes","No"];
     const hasBankAccount = ["Yes","No"];
     const [hasSmartphone, setHasSmartPhone] = useState<string>(smartphone[0]);
@@ -79,7 +79,7 @@ const BankRegistrationInputSections = () => {
                     <FlowLine type="three" />
                 </div>
                 <div className="p-20 w-full">
-                    <TextInput  label="Personal Bank Account Number" placeholder="Enter your account Number" span="*" spanClass='font-8' name='accountNumber'  updateFunction={setAccountNumber}/>
+                    <TextInput  label="Personal Bank Account Number" placeholder="Enter your account Number" span="*" spanClass='font-8' name='accountNumber'  updateFunction={setAccountNumber} regex={/^\d+$/}/>
                 </div>
             </div>
         </>}

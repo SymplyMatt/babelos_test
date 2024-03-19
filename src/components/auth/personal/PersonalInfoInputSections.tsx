@@ -117,10 +117,10 @@ const InputSections = () => {
             <FlowLine type="three" />
             <div className="w-full name-flex">
                 <div className="p-20 w-full">
-                    <TextInput  label="First Name" placeholder="Enter First Name" span="*" name='firstName' updateFunction={setFirstName}/>
+                    <TextInput  label="First Name" placeholder="Enter First Name" span="*" name='firstName' updateFunction={setFirstName} regex={/^[a-zA-Z]+$/} />
                 </div>
                 <div className="p-20 w-full">
-                    <TextInput  label="Last Name" placeholder="Enter Last Name" span="*" name='lastName' updateFunction={setLastName}/>
+                    <TextInput  label="Last Name" placeholder="Enter Last Name" span="*" name='lastName' updateFunction={setLastName} regex={/^[a-zA-Z]+$/}/>
                 </div>
             </div>
         </div>
@@ -141,7 +141,7 @@ const InputSections = () => {
                         <i className="fa-solid fa-angle-down"></i>
                     </div>
                     <div className="w-full">
-                        <TextInput   placeholder="+234 000 0000 000" span="*" withLabel={false} name='credential' updateFunction={setPhoneNumber}/>
+                        <TextInput   placeholder="234 000 0000 000" span="*" withLabel={false} name='credential' updateFunction={setPhoneNumber} regex={/^\d+$/}/>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@ const InputSections = () => {
         <div className="section w-80">
             <FlowLine type="one" />
             <div className="p-20 w-full">
-                <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14' name='email' updateFunction={setEmailAddress} />
+                <TextInput  label="Email address" placeholder="Enter email Address" span="(Optional)" spanClass='font-14' name='email' updateFunction={setEmailAddress}  regex={/[\s\S]/}/>
             </div>
         </div>
         <div className="section w-80">
@@ -173,7 +173,16 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="Residential Address" placeholder="Ex: No 21 Agaro road, Abeokuta." span="*" spanClass='font-8' name='resAddress' updateFunction={setResidentialAddress}/>
+            <TextInput
+                label="Residential Address"
+                placeholder="Ex: No 21 Agaro road, Abeokuta."
+                span="*"
+                spanClass='font-8'
+                name='resAddress'
+                updateFunction={setResidentialAddress}
+                regex={/./} // Match any character
+            />
+
             </div>
         </div>
         <div className="section w-80">
@@ -197,7 +206,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="ID Number" placeholder="Enter your ID Number" span="*" spanClass='font-14' updateFunction={setIdNumber}/>
+                <TextInput  label="ID Number" placeholder="Enter your ID Number" span="*" spanClass='font-14' updateFunction={setIdNumber}   regex={/[\s\S]/}/>
             </div>
         </div>
         <div className="section w-80">
@@ -205,7 +214,7 @@ const InputSections = () => {
                 <FlowLine type="three" />
             </div>
             <div className="p-20 w-full">
-                <TextInput  label="Upload ID document" placeholder="Enter your ID Number" span="*" spanClass='font-8' type='file' updateFunction={setIdDocument} />
+                <TextInput  label="Upload ID document" placeholder="Enter your ID Number" span="*" spanClass='font-8' type='file' updateFunction={setIdDocument}   regex={/[\s\S]/} />
             </div>
         </div>
         <div className="section w-80">

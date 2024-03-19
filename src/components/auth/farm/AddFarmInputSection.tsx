@@ -242,7 +242,7 @@ interface ComponentProps {
         <div className="section w-80">
             <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed' hide={true}/>
             <div className="p-20 w-full">
-                <TextInput  label="FARM NAME" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={setName} name='name' reset={reset}/>
+                <TextInput  label="FARM NAME" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={setName} name='name' reset={reset} regex={/[\s\S]/}/>
             </div>
         </div>
         <div className="section w-80">
@@ -250,8 +250,8 @@ interface ComponentProps {
             <div className="p-20 w-full flex column gap-10">
                 <div className="label">Farm Coordinates <span className='font-14 italic'>(Optional)</span></div>
                 <div className="flex gap-10">
-                    <TextInput  label="" placeholder="Longitude" updateFunction={setLongitude} name='long' reset={reset}/>
-                    <TextInput  label="" placeholder="Latitude" updateFunction={setLatitude} name='lat' reset={reset}/>
+                    <TextInput  label="" placeholder="Longitude" updateFunction={setLongitude} name='long' reset={reset} regex={/[0-9.]/}/>
+                    <TextInput  label="" placeholder="Latitude" updateFunction={setLatitude} name='lat' reset={reset}  regex={/[0-9.]/}/>
                 </div>
                 <div className="label"><span className='font-14 light'>Ex: Longitude: 8.6753° E. Latitude: 9.0820° N</span></div>
             </div>

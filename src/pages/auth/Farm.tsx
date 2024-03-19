@@ -6,8 +6,13 @@ import AuthPage from "../../components/common/AuthPage"
 import AuthMain from "../../components/common/Main"
 import { useState } from "react"
 import OverlayFarm from "../../components/auth/farm/OverlayFarm"
+import { useNavigate } from "react-router-dom"
 const Farm = () => {
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const onClick = () =>{
+    navigate('/auth/addfarm');
+  }
   return (
     <AuthPage>
         <ImageHero page="farm"/>
@@ -16,7 +21,7 @@ const Farm = () => {
         <AuthMain>
             <FarmForm setShowOverlay={setShowOverlay}/>
         </AuthMain>
-        <OverlayFarm showOverlay={showOverlay}/>
+        <OverlayFarm showOverlay={showOverlay} title="Farm added!" onClickFunction={onClick}/>
     </AuthPage>
   )
 }

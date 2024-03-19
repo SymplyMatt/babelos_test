@@ -2,14 +2,15 @@ import FormTitle from "../common/FormTitle"
 import AddFarmInputSections from "./AddFarmInputSection"
 
 interface ComponentProps {
+  showOverlay? : boolean; 
   setShowOverlay : Function;
 }
 
-const AddFarmForm: React.FC<ComponentProps>  = ({setShowOverlay}) => {
+const AddFarmForm: React.FC<ComponentProps>  = ({showOverlay = false,setShowOverlay}) => {
   return (
     <div className="form-container">
         <FormTitle title="Create Account" description="Farm Registration" step="four" />
-        <AddFarmInputSections setShowOverlay={setShowOverlay}/>
+        <AddFarmInputSections showOverlay={showOverlay} setShowOverlay={setShowOverlay}/>
     </div>
   )
 }

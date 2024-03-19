@@ -13,6 +13,7 @@ import next from '../../../assets/prev.svg'
 import prev from '../../../assets/next.svg'
 import dot_active from '../../../assets/dot_active.svg'
 import dot_inactive from '../../../assets/dot_inactive.svg'
+import crops_icon from '../../../assets/crops_icon.svg'
 import { useContext, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,10 +21,11 @@ import { Context, FarmDetail } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 interface ComponentProps {
+    showOverlay : boolean;
     setShowOverlay : Function;
   }
   
-  const AddFarmInputSections: React.FC<ComponentProps>  = ({setShowOverlay})  => {
+  const AddFarmInputSections: React.FC<ComponentProps>  = ({showOverlay,setShowOverlay})  => {
     const navigate = useNavigate();
     const { formInputs,setFormInputs } = useContext(Context);
     const crops = ["Maize","Cassava"];
@@ -39,7 +41,7 @@ interface ComponentProps {
     const [isValid, setIsValid] = useState<boolean>(false);
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [activeFarm, setActiveFarm] = useState<FarmDetail>(formInputs.farmDetails[activeIndex]);
-
+    const [reset, setReset] = useState<boolean>(false);
     useEffect(()=>{
         setActiveFarm(formInputs.farmDetails[activeIndex]);
     }, [activeIndex]);
@@ -103,7 +105,12 @@ interface ComponentProps {
                 ...formInputs,
                 farmDetails : newFarmDetails
             });
+            setName('');
+            setLongitude('');
+            setLatitude('');
             setShowOverlay(true);
+            setCropsArray([]);
+            setShowAddNewCrop(true);
         }
     };
     const removeFarm = (id : number) => {
@@ -118,6 +125,9 @@ interface ComponentProps {
             navigate('/auth/farm');
         }
     };
+    useEffect(()=>{
+        setReset(!reset);
+    },[showOverlay])
   return (
     <div className="form-area">
         <div className="section w-80">
@@ -169,7 +179,7 @@ interface ComponentProps {
                 <div className="w-full flex gap-10">
                     <div className="flex column">
                         <div className="flex gap-5 m-20-r">
-                            <div className=""><img src={farmname_icon} alt="" /></div>
+                            <div className=""><img src={crops_icon} alt="" /></div>
                             <div className="flex column gap-5">
                                 <div className="title">
                                     CROPS PRODUCED
@@ -228,7 +238,7 @@ interface ComponentProps {
         <div className="section w-80">
             <FlowLine type="three" firstLineActive={true} secondLineActive={true} icon='completed' hide={true}/>
             <div className="p-20 w-full">
-                <TextInput  label="FARM NAME" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={setName} name='name'/>
+                <TextInput  label="FARM NAME" placeholder="Enter farm name" span="*" spanClass='font-8' updateFunction={setName} name='name' reset={reset}/>
             </div>
         </div>
         <div className="section w-80">
@@ -236,8 +246,8 @@ interface ComponentProps {
             <div className="p-20 w-full flex column gap-10">
                 <div className="label">Farm Coordinates <span className='font-14 italic'>(Optional)</span></div>
                 <div className="flex gap-10">
-                    <TextInput  label="" placeholder="Longitude" updateFunction={setLongitude} name='long'/>
-                    <TextInput  label="" placeholder="Latitude" updateFunction={setLatitude} name='lat'/>
+                    <TextInput  label="" placeholder="Longitude" updateFunction={setLongitude} name='long' reset={reset}/>
+                    <TextInput  label="" placeholder="Latitude" updateFunction={setLatitude} name='lat' reset={reset}/>
                 </div>
                 <div className="label"><span className='font-14 light'>Ex: Longitude: 8.6753° E. Latitude: 9.0820° N</span></div>
             </div>

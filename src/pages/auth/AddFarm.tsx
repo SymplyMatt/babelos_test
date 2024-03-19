@@ -4,19 +4,29 @@ import MobileNav from "../../components/auth/common/MobileNav"
 import AuthPage from "../../components/common/AuthPage"
 import AuthMain from "../../components/common/Main"
 import AddFarmForm from "../../components/auth/farm/AddFarmForm"
-import { useState } from "react"
-import OverlayAddFarm from "../../components/auth/farm/OverlayAddFarm"
+import { useContext, useState } from "react"
+import OverlayFarm from "../../components/auth/farm/OverlayFarm"
+import { Context } from "../../context/AuthContext"
 const AddFarm = () => {
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
+  const { formInputs } = useContext(Context);
+  const onClick = () =>{
+    setShowOverlay(false);
+  }
   return (
     <AuthPage>
         <ImageHero page="farm"/>
         <MobileNav />
         <FlowLineMobile page='farm'/>
         <AuthMain>
-            <AddFarmForm setShowOverlay={setShowOverlay} />
+            <AddFarmForm setShowOverlay={setShowOverlay} showOverlay={showOverlay}/>
         </AuthMain>
-        <OverlayAddFarm showOverlay={showOverlay}/>
+        <OverlayFarm
+        showOverlay={showOverlay}
+        title={`You have added ${formInputs.farmDetails.length} ${formInputs.farmDetails.length > 1 ? 'farms' : 'farm'}!`}
+        onClickFunction={onClick}
+/>
+
     </AuthPage>
   )
 }

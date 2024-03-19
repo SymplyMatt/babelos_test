@@ -7,18 +7,24 @@ interface ComponentProps {
     span? : string;
     spanClass? : string;
     withLabel? : boolean;
+    reset?: boolean;
     type?: string;
     name?: string;
     updateFunction?: Function;
 }
-const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8', type='text', name='', updateFunction}) => {
+const TextInput: React.FC<ComponentProps> = ({label, placeholder, span, withLabel = true, spanClass = 'font-8', type='text', name='', updateFunction, reset=false}) => {
   const { updateFormInputs } = useContext(Context);
   const [inputValue, setInputValue] = useState('');
+  useEffect(()=>{
+    if(reset){
+      setInputValue('');
+    }
+  }, [reset]);
   useEffect(()=>{
     if(updateFunction){
       updateFunction(inputValue);
     }else{
-      if(name ){
+      if(name){
         updateFormInputs(name,inputValue);
       }
     }

@@ -1,13 +1,13 @@
 import React from 'react'
 import farm_icon from '../../../assets/farm_icon.svg'
-import { useNavigate } from 'react-router-dom';
 
 interface ComponentProps {
     showOverlay : boolean;
+    onClickFunction : Function;
+    title : string;
   }
   
-const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay})  => {
-    const navigate = useNavigate();
+const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, title})  => {
     return (
     <>
         {showOverlay && <div className="overlay-farm">
@@ -18,7 +18,7 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay})  => {
                     <img src={farm_icon} alt="" />
                 </div>
                 <div className="flex center column gap-10 title-section">
-                    <div className="flex column text-center title">Farm added!</div>
+                    <div className="flex column text-center title">{title}</div>
                     <div className="flex column text-center desc">Would you like to add another farm? </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay})  => {
                 <div className={`w-full form-buttons column`}>
                     <div className={`w-full flex align-center justify-center btn active green m-40`}>No, create my account</div>
                     <div className={`w-full flex align-center justify-center btn active m-40`} onClick={()=>{
-                        navigate('/auth/addfarm');
+                        onClickFunction && onClickFunction();
                     }}>Yes, I have another farm</div>
                 </div>
             </div>

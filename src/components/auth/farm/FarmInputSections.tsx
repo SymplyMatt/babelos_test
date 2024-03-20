@@ -179,7 +179,7 @@ const FarmInputSections : React.FC<ComponentProps>  = ({setShowOverlay})  => {
                 </div>
             </div>
         </div>
-        <FormButtons step='one' active={isValid} onClickFunction={clickFunction } buttonText='Add Farm'/>
+        <FormButtons step='four' active={isValid} onClickFunction={clickFunction } buttonText='Add Farm'/>
         <ToastContainer />
     </div>
   )

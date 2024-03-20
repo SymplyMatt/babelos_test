@@ -324,7 +324,7 @@ interface ComponentProps {
                 </div>
             </div>
         </div>
-        <FormButtons step='one' active={isValid} onClickFunction={clickFunction } buttonText='Add Farm'/>
+        <FormButtons step='five' active={isValid} onClickFunction={clickFunction } buttonText='Add Farm'/>
         <ToastContainer />
     </div>
   )

@@ -11,7 +11,7 @@ const Farm = () => {
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
   const navigate = useNavigate();
   const onClick = () =>{
-    navigate('/auth/addfarm');
+    navigate('/auth/addfarm', {replace : true, state : {auth : true}});
   }
   return (
     <AuthPage>

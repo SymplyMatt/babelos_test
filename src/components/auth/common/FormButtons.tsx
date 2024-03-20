@@ -27,6 +27,9 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onC
               if(step =='four'){
                 navigate('/auth/fingerprint', {replace : true, state : {auth : true}});
               }
+              if(step =='five'){
+                navigate('/auth/farm', {replace : true, state : {auth : true}});
+              }
             }}>Back</div>
             <div className={`w-full flex align-center justify-center btn  ${active && !loading ? 'active' : 'inactive'} green`} onClick={()=> {
               if(onClickFunction && !loading){

@@ -59,7 +59,7 @@ const BankRegistrationInputSections = () => {
             </div>
         </div>
         <div className="section w-80">
-            <FlowLine type="three" />
+            <FlowLine type="three" hideThirdLine= {bankAccount.toLowerCase() as string != 'yes'} />
             <div className="p-20 w-full gender">
                 <div className="label">Do you have a bank account <span className="font-8">*</span></div>
                 <div className="">
@@ -67,7 +67,7 @@ const BankRegistrationInputSections = () => {
                 </div>
             </div>
         </div>
-        {formInputs.hasBankAccount.toLowerCase() as string == 'yes' && <>
+        {bankAccount.toLowerCase() as string == 'yes' && <>
             <div className="section w-80">
                 <FlowLine type="one" />
                 <div className="p-20 w-full">

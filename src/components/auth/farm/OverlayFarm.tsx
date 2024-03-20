@@ -56,7 +56,7 @@ const OverlayFarm: React.FC<ComponentProps>  = ({showOverlay, onClickFunction, t
             const response: any = await sendRequest('post', `/signup`,reqData);
             setLoading(false);
             if (response.status === 200) {
-                navigate('/auth/verify', { state: { auth : true }});
+                navigate('/auth/verify', {replace : true, state : {auth : true}});
                 
             } else {
                 setLoading(false);

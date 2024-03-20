@@ -44,7 +44,7 @@ const BankRegistrationInputSections = () => {
                 accountNumber: accountNumber,
                 bankName: bank,
             });
-            navigate('/auth/fingerprint');
+            navigate('/auth/fingerprint', {state : {auth : true}});
         }
     }
   return (

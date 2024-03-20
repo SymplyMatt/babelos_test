@@ -18,8 +18,14 @@ const FormButtons: React.FC<ComponentProps> =  ({step = "one", active= true, onC
         </div>
         <div className={`w-full form-buttons`}>
             <div className={`w-full flex align-center justify-center btn  ${step == 'one' ? 'inactive' : 'active'}`} onClick={()=>{
-              if(step !=='one'){
-                navigate(-1);
+              if(step =='two'){
+                navigate('/auth', {replace : true, state : {auth : true}});
+              }
+              if(step =='three'){
+                navigate('/auth/bank-registration', {replace : true, state : {auth : true}});
+              }
+              if(step =='four'){
+                navigate('/auth/fingerprint', {replace : true, state : {auth : true}});
               }
             }}>Back</div>
             <div className={`w-full flex align-center justify-center btn  ${active && !loading ? 'active' : 'inactive'} green`} onClick={()=> {

@@ -12,7 +12,7 @@ const FingerprintInputSections = () => {
         setValidateForm(event.target.checked);
     };
     const clickFunction = () => {
-        validateForm && navigate('/auth/farm');
+        validateForm && navigate('/auth/farm',{state : {auth : true}});
     }
     return (
         <div className="form-area">

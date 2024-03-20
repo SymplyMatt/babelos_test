@@ -108,7 +108,7 @@ const InputSections = () => {
                 idType: idType, 
                 siteId: site,
             });
-            navigate('/auth/bank-registration');
+            navigate('/auth/bank-registration', {state : {auth : true}});
         }
     }
   return (

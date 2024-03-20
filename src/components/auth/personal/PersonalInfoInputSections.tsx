@@ -66,9 +66,17 @@ const InputSections = () => {
         var containsNumber = numberRegex.test(input);
         return containsUppercase && containsLowercase && containsNumber;
     }
+    function isValidNigerianPhoneNumber(number : string) {
+        const nigerianNumberRegex = /^(234[789]\d{9}|0[789]\d{9})$/;
+        return nigerianNumberRegex.test(number);
+    }
     const validateInputs = (showErrors : boolean = false) =>{
         if(!firstName || !lastName || !phoneNumber || !password || !gender || !residentialAddress || !age || !idType ||  !site){
             showErrors && toast.error('Enter required fields!');
+            return false
+        }
+        if(!isValidNigerianPhoneNumber(phoneNumber)){
+            showErrors && toast.error('Enter a valid nigerian phone number!');
             return false
         }
         if(emailAddress && !isValidEmail(emailAddress)){

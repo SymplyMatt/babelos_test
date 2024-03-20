@@ -4,8 +4,10 @@ import MobileNav from "../../components/auth/common/MobileNav"
 import PersonalInfoForm from "../../components/auth/personal/PersonalInfoForm"
 import AuthPage from "../../components/common/AuthPage"
 import AuthMain from "../../components/common/Main"
+import AnimatedPage from "./AnimatedPage"
 const Personal = () => {
   return (
+    <AnimatedPage> 
     <AuthPage>
         <ImageHero page="personal"/>
         <MobileNav />
@@ -14,6 +16,7 @@ const Personal = () => {
             <PersonalInfoForm />
         </AuthMain>
     </AuthPage>
+    </AnimatedPage>
   )
 }
 

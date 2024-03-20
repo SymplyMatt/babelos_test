@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import AnimatedPage from './AnimatedPage';
 
 const Auth: React.FC = () => {
   const location = useLocation();
@@ -19,7 +20,9 @@ const Auth: React.FC = () => {
   }, [location]);
 
   return <>
-    {showPage && <Outlet />}
+    {showPage &&     <AnimatedPage>
+      <Outlet />
+      </AnimatedPage>}
   </>
 };
 

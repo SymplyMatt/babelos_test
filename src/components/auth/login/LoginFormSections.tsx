@@ -106,7 +106,9 @@ const LoginInputSections = () => {
                     }}
                     >{!loading ? 'Login' :  <i className="fa-solid fa-spinner spinner"></i>}</div>
                 </div>
-                <div className="font-14">Don't Have an account? <span className='green pointer'>Sign Up</span></div>
+                <div className="font-14">Don't Have an account? <span className='green pointer' onClick={()=>{
+                    navigate('/auth');
+                }}>Sign Up</span></div>
             </div>
         </div>
         <ToastContainer />

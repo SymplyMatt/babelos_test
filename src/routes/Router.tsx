@@ -10,6 +10,7 @@ import Verify from "../pages/auth/Verify";
 import VerificationSuccess from "../pages/auth/VerificationSuccess";
 import ApprovalPending from "../pages/auth/ApprovalPending";
 import AddFarm from "../pages/auth/AddFarm";
+import AnimatedPage from "../pages/auth/AnimatedPage";
 
 const Routes = (): JSX.Element => {
   type routeProps = Array<{
@@ -81,7 +82,9 @@ const Routes = (): JSX.Element => {
   ];
   const router = createBrowserRouter([...pageRoutes,...authRoutes]);
 
-  return <RouterProvider router={router} />;
+  return <AnimatedPage>
+      <RouterProvider router={router} />;
+    </AnimatedPage>
 };
 
 export default Routes;

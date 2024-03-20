@@ -7,6 +7,7 @@ import AuthMain from "../../components/common/Main"
 import { useState } from "react"
 import OverlayFarm from "../../components/auth/farm/OverlayFarm"
 import { useNavigate } from "react-router-dom"
+import AnimatedPage from "./AnimatedPage"
 const Farm = () => {
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -14,15 +15,17 @@ const Farm = () => {
     navigate('/auth/addfarm', {replace : true, state : {auth : true}});
   }
   return (
-    <AuthPage>
-        <ImageHero page="farm"/>
-        <MobileNav />
-        <FlowLineMobile page='farm'/>
-        <AuthMain>
-            <FarmForm setShowOverlay={setShowOverlay}/>
-        </AuthMain>
-        <OverlayFarm showOverlay={showOverlay} title="Farm added!" onClickFunction={onClick}/>
-    </AuthPage>
+    <AnimatedPage>
+      <AuthPage>
+          <ImageHero page="farm"/>
+          <MobileNav />
+          <FlowLineMobile page='farm'/>
+          <AuthMain>
+              <FarmForm setShowOverlay={setShowOverlay}/>
+          </AuthMain>
+          <OverlayFarm showOverlay={showOverlay} title="Farm added!" onClickFunction={onClick}/>
+      </AuthPage>
+    </AnimatedPage>
   )
 }
 

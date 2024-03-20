@@ -31,7 +31,6 @@ const LoginInputSections = () => {
             setLoading(false);
             if (response.status === 200) {
                 navigate('/auth/verify', { state: { auth : true }});
-                
             } else {
                 setLoading(false);
                 toast.error(response.message);
